@@ -1,0 +1,18 @@
+import java.util.*;
+
+public class Percobaan {
+
+	public static void main(String[] args) throws Exception{
+		Scanner scan = new Scanner(System.in);
+		int x = scan.nextInt();
+		int y = scan.nextInt();
+		for(int j = x;j >= 1;j--) {
+			for(int i = y;i >= 1;i--) {
+				System.out.print("o ");	
+			}
+			System.out.println("");
+		}
+		
+	}
+
+}
