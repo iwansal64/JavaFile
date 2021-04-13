@@ -1,12 +1,14 @@
 package cui;
 
 import java.util.Scanner;
+import java.util.Random;
 
 public class Permainan_Java_1 {
 
 	public static void main(String[] args) throws Exception{
 		
 		Scanner scan = new Scanner(System.in);
+		Random ran = new Random();
 		int x = 0;
 		
 		System.out.println("Kalo mau keluar ketik 'k'.\n");
@@ -25,6 +27,15 @@ public class Permainan_Java_1 {
 			int cheer = 10000;
 			int strong = 20000; 
 			int sword = 30000;
+			int life = 15000;
+			int health = 10;
+			int time;
+			int enemy;
+			int ela = 3;
+			int elh = 10;
+			int reward1;
+			int reward2;
+			int reward3;
 			
 			System.out.println("Di hari yang cerah... mau ngapain ya?\n");
 			Thread.sleep(2000);			
@@ -53,6 +64,83 @@ public class Permainan_Java_1 {
 				else if(d.equals("check")) {
 					System.out.println("power kamu = "+pow+"\n"+"kesenangan kamu = "+senang+"\n");
 					System.out.println("Duit kamu "+"Rp."+duit);
+					System.out.println("Darah kamu = "+health);
+				}
+				else if(d.equals("hunt")) {
+					System.out.println("\n Kamu ngehunt..");
+					Thread.sleep(2000);
+					System.out.println("\nkamu yakin?...");
+					System.out.println("dengan kesenangan = "+senang);
+					System.out.println("dan Kekuatan = "+pow);
+					String data = scan.nextLine();
+					if(data.equals("y")) {
+						System.out.println("Oke kalo kamu yakin");
+						System.out.println("Kita ngeHunt!");
+						time = 1 + ran.nextInt(6);
+						time *= 1000;
+						Thread.sleep(time);
+						enemy = 1 + ran.nextInt();
+						if(enemy >= 1 && enemy <= 3) {
+							int loop = 0;
+							do {
+								System.out.println("Kamu Bertemu musuh lemah");
+								Thread.sleep(2000);
+								System.out.println("kamu di serang");
+								health -= ela;
+								Thread.sleep(2000);
+								if(health == 0) {
+									System.out.println("Kamu Kalah :(");
+									Thread.sleep(2000);
+									System.out.println("Kamu Pun Mati...");
+									Thread.sleep(2000);
+									System.out.println("Sorry..");
+									Thread.sleep(1000);
+									System.out.println("Game Di Tutup...");
+									return;
+								}
+								else {
+									System.out.println("\ndarah kamu sekarang "+health+" -"+ela);
+									Thread.sleep(2000);
+								}
+								System.out.println("Sekarang Giliran kamu yang menyerang");
+								elh -= pow;
+								Thread.sleep(2000);
+								if(elh == 0) {
+									System.out.println("Musuh Kalah Dan Kamu Menang Yey!!");
+									System.out.println("===Result===");
+									reward1 = 1 + ran.nextInt(3);
+									if(reward1 == 1) {
+										System.out.println("--15Ribu");
+										System.out.println("--10Pow");
+										System.out.println("--20Kes");
+										duit += 15000;
+										pow += 10;
+										senang += 20;
+									}
+									else if(reward1 == 2) {
+										System.out.println("--20Ribu");
+										System.out.println("--12Pow");
+										System.out.println("--25Kes");
+										duit += 20000;
+										pow += 12;
+										senang += 25;
+									}
+									else if(reward1 == 3) {
+										System.out.println("--25Ribu");
+										System.out.println("--15Pow");
+										System.out.println("--30Kes");
+										duit += 25000;
+										pow += 15;
+										senang += 30;
+									}
+								}
+							}while(loop == 0);
+							
+						}
+						
+					}
+					
+					
 				}
 				else if(d.equals("shop")) {
 					int t = 0;
@@ -102,6 +190,21 @@ public class Permainan_Java_1 {
 									}							
 									
 								}while(loop5 == 0);
+							}
+						}
+						else if(player.equals("life potion")) {
+							if(duit >= life) {
+								System.out.println("Transaksi Berhasil");
+								health = 10;
+								System.out.println("darah di pulihkan");
+								System.out.print("\nMau Beli Lagi?y/n  ");
+								String data = scan.nextLine();
+								if(data.equals("y")) {
+									
+								}
+								else if(data.equals("n")) {
+									break;
+								}
 							}
 						}
 						else if(player.equals("strong potion")) {
