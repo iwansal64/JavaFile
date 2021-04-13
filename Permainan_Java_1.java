@@ -9,7 +9,8 @@ public class Permainan_1 {
 		
 		Scanner scan = new Scanner(System.in);
 		Random ran = new Random();
-		int x = 0;
+		
+		boolean nextlv = false;
 		
 		System.out.println("Kalo mau keluar ketik 'k'.\n");
 		Thread.sleep(2000);
@@ -27,6 +28,8 @@ public class Permainan_1 {
 			int str = 0;
 			int kes = 0;
 			int magicpow = 0;
+			int level = 0;
+			int lvl = 0;
 			
 			//Harga Harga
 			int cheer = 10000;
@@ -39,6 +42,7 @@ public class Permainan_1 {
 			int uangloop = 40000;
 			int uangpow = 40000;
 			int pets = 50000;
+			int cart = 40000;
 			int nextlvl = 100000;
 			
 			//Randomize Integer
@@ -56,6 +60,7 @@ public class Permainan_1 {
 			boolean looppow = false;
 			boolean kucing = false;
 			boolean next = false;
+			boolean cartbool = false;
 			
 			System.out.println("Assalamualaikum....");
 			Thread.sleep(2000);			
@@ -84,7 +89,7 @@ public class Permainan_1 {
 				pow += str;
 				senang += kes;
 				System.out.println("Fish/Chop/Check(Pow & Kesenangan)");
-				System.out.print("Mau ngapain?F/C/Check/Shop/Hunt\n/HuntAdvanced/HuntExpert/magic shop = ");
+				System.out.print("Mau ngapain?F/C/Check/Shop/Hunt\n/HuntAdvanced/HuntExpert/magic shop/tutor? = ");
 				Thread.sleep(1000);
 				String d = scan.nextLine();
 				if(d.equals("f")) {
@@ -95,7 +100,7 @@ public class Permainan_1 {
 					System.out.println(" pow +1\nsenang +2\nduit +1\n");
 				}
 				else if(d.equals("c")) {
-					pow += 2;
+					pow += 3;
 					duit += 3000;
 					health -= 2;
 					System.out.println("huuft sangat Melelahkan");
@@ -109,40 +114,82 @@ public class Permainan_1 {
 					System.out.println("Duit kamu "+"Rp."+duit);
 					System.out.println("Darah kamu = "+health);
 					System.out.println("Token sekarang = "+token);
+					System.out.println("lvl = "+lvl);
+					System.out.println("Level = "+level);
+				}
+				else if(d.equals("tutor")) {
+					System.out.println("====TUTORIAL LEVEL====");
+					System.out.println("1 lvl = 0.1level");
+					System.out.println("1 level = 10 lvl\n\n");
+					
+					System.out.println("====TUTORIAL FARMING====");
+					System.out.println("-Fish(f):Memancing");
+					System.out.println("+1rb\n+2senang\n+1pow");
+					System.out.println("\n-Chop(c):Menebang");
+					System.out.println("+3rb\n3pow\n-2health");
+					System.out.println("\n-Mine(m):Menambang");
+					System.out.println("+5rb\n+5pow\n-3health\n(Note : Harus Level 3)");
+					
+					System.out.println("====TUTORIAL SHOP====");
+					System.out.println("Ada dua shop disini");
+					System.out.println("1.SHOP(shop)");
+					System.out.println("2.MAGIC SHOP(magic shop)");
+					System.out.println("Di Shop Barang Yang Di Jual\nNormal");
+					System.out.println("Di Magic Shop BArang Yang\nDi Jual Adalah Barang Expert");
+					System.out.println("(Note : Magic Shop Terbuka Level 2)");
 				}
 				else if(d.equals("magic shop")) {
-					System.out.println("Magic..(\\\\|//)");
-					Thread.sleep(2000);
-					System.out.println("Shop---{--=-=--}");
-					Thread.sleep(2000);
-					System.out.print("1/2/3?  ");
-					int data = scan.nextInt();
-					if(data == 1) {
-						do {
-							System.out.println("1.====Magic Pot====");
-							System.out.println("-Memperkuat Magic\nPower (Jika ada) -40rb");
-							Thread.sleep(2000);
-							System.out.println("2.=== life Pot ====");
-							System.out.println("-Menambah Max HP \nHP + 2 -25rb");
-							Thread.sleep(2000);
-							System.out.println("3.== Happy Pow ====");
-							System.out.println("-Konversi Kesenangan\nMenjadi Power -40rb");
-							System.out.print("\nMau Beli Apa? ");
-							data = scan.nextInt();
-							if(data == 1) {
-								if(magicbool = false) {
-									System.out.println("Tidak Punya Magic.");
-									System.out.println("Mau Beli Yang Lain? y/n");
-									datastr = scan.nextLine();
-									if(datastr.equals("n")) {
-										break;
+					if(level >= 2) {
+						System.out.println("Magic..(\\\\|//)");
+						Thread.sleep(2000);
+						System.out.println("Shop---{--=-=--}");
+						Thread.sleep(2000);
+						System.out.print("1/2/3?  ");
+						int data = scan.nextInt();
+						if(data == 1) {
+							do {
+								System.out.println("1.====Magic Pot====");
+								System.out.println("-Memperkuat Magic\nPower (Jika ada) -40rb");
+								Thread.sleep(2000);
+								System.out.println("2.=== life Pot ====");
+								System.out.println("-Menambah Max HP \nHP + 2 -25rb");
+								Thread.sleep(2000);
+								System.out.println("3.== Happy Pow ====");
+								System.out.println("-Konversi Kesenangan\nMenjadi Power -40rb");
+								System.out.print("\nMau Beli Apa? ");
+								data = scan.nextInt();
+								if(data == 1) {
+									if(magicbool = false) {
+										System.out.println("Tidak Punya Magic.");
+										System.out.println("Mau Beli Yang Lain? y/n");
+										datastr = scan.nextLine();
+										if(datastr.equals("n")) {
+											break;
+										}
+										
 									}
-									
+									else if(magicbool = true) {
+										if(duit >= magic) {
+											duit -= magic;
+											magic += 10;
+											System.out.println("Terbeli!");
+											System.out.println("mau beli lagi?");
+											datastr = scan.nextLine();
+											if(datastr.equals("n")) {
+												break;
+											}
+										}
+										else if(duit < magic) {
+											System.out.println("Tidak Cukup DUIT!");
+											System.out.println("kesenangan -10");
+											senang -= 10;
+										}
+									}
 								}
-								else if(magicbool = true) {
-									if(duit >= magic) {
-										duit -= magic;
-										magic += 10;
+								else if(data == 2) {
+									if(duit >= life) {
+										duit -= life;
+										health += 2;
 										System.out.println("Terbeli!");
 										System.out.println("mau beli lagi?");
 										datastr = scan.nextLine();
@@ -150,128 +197,120 @@ public class Permainan_1 {
 											break;
 										}
 									}
-									else if(duit < magic) {
+									else if(duit < life) {
 										System.out.println("Tidak Cukup DUIT!");
 										System.out.println("kesenangan -10");
 										senang -= 10;
 									}
 								}
-							}
-							else if(data == 2) {
-								if(duit >= life) {
-									duit -= life;
-									health += 2;
-									System.out.println("Terbeli!");
-									System.out.println("mau beli lagi?");
-									datastr = scan.nextLine();
-									if(datastr.equals("n")) {
+								else if(data == 3) {
+									if(duit >= happy) {
+										duit -= happy;
+										powhap = true;
+										System.out.println("Terbeli!");
+										System.out.println("mau beli lagi?");
+										datastr = scan.nextLine();
+										if(datastr.equals("n")) {
+											break;
+										}
+									}
+									else if(duit < happy) {
+										System.out.println("Tidak Cukup DUIT!");
+										System.out.println("kesenangan -10");
+										senang -= 10;
+									}
+								}
+								else {
+									break;
+								}
+								
+							}while(true);
+						}
+						else  if(data == 2) {
+							do {
+								System.out.println("1.=== Uang Waktu ===");
+								System.out.println("-Setelah satu kali\nloop uang akan\nbertambah 1 -40rb");
+								System.out.println("2.=== Power Waktu===");
+								System.out.println("-Setelah satu kali\nloop power akan\nbertambah 1 -40rb");
+								System.out.println("3.====   Pet    ====");
+								System.out.println("-HaHa Kucing Lucu\nUntuk menemani adv & Mine -50rb");
+								System.out.print("\nMau Beli Apa? ");
+								data = scan.nextInt();
+								if(data == 1) {
+									if(duit >= uangloop) {
+										duit -= uangloop;
+										loopuang = true;
+										System.out.println("Terbeli!");
+										System.out.println("Uang Akan Mendatangi mu setiap hari");
+									}
+									else if(duit < uangloop) {
+										System.out.println("Tidak Cukup Uang");
+									}
+								}
+								else if(data == 2) {
+									if(duit >= uangpow) {
+										duit -= uangpow;
+										looppow = true;
+										System.out.println("Terbeli!");
+										System.out.println("Power Bertambah setiap hari");
+									}
+									else if(duit < uangpow) {
+										System.out.println("Tidak Cukup Uang");
+									}
+								}
+								else if(data == 3) {
+									if(duit >= pets) {
+										duit -= pets;
+										kucing = true;
+										System.out.println("Terbeli Yeee");
+										System.out.println("Kucing Unyu Mengikutimu setiap hari");
+									}
+									else if(duit < pets) {
+										System.out.println("Duit Kurang");
+									}
+								}
+								else {
+									break;
+								}
+								
+								
+							}while(true);
+						}
+						else if(data == 3) {
+							do {
+								System.out.println("====  NEXT  ====");
+								System.out.println("-Pindah Ke Yang \nLebih Baik~ -100rb");
+								String datamng = scan.nextLine();
+								if(datamng.equals("y")) {
+									if(duit >= nextlvl) {
+										System.out.println("Kamu Memilih Migrasi...");
+										Thread.sleep(2000);
+										System.out.println("Kamu Capek Disini terus...");
+										Thread.sleep(2000);
+										datastr = scan.nextLine();
+										System.out.println("Bye");
+										next = true;
+										break;
+									}
+									else if(duit < nextlvl) {
+										System.out.println("Mungkin Kamu Capek\nTapi Duit Kamu Kurang :v");
 										break;
 									}
 								}
-								else if(duit < life) {
-									System.out.println("Tidak Cukup DUIT!");
-									System.out.println("kesenangan -10");
-									senang -= 10;
-								}
-							}
-							else if(data == 3) {
-								if(duit >= happy) {
-									duit -= happy;
-									powhap = true;
-									System.out.println("Terbeli!");
-									System.out.println("mau beli lagi?");
-									datastr = scan.nextLine();
-									if(datastr.equals("n")) {
-										break;
-									}
-								}
-								else if(duit < happy) {
-									System.out.println("Tidak Cukup DUIT!");
-									System.out.println("kesenangan -10");
-									senang -= 10;
-								}
-							}
-							else {
-								break;
-							}
-							
-						}while(true);
+								
+							}while(true);
+						}
 					}
-					else  if(data == 2) {
-						do {
-							System.out.println("1.=== Uang Waktu ===");
-							System.out.println("-Setelah satu kali\nloop uang akan\nbertambah 1 -40rb");
-							System.out.println("2.=== Power Waktu===");
-							System.out.println("-Setelah satu kali\nloop power akan\nbertambah 1 -40rb");
-							System.out.println("3.====   Pet    ====");
-							System.out.println("-HaHa Kucing Lucu\nUntuk menemani adv & Mine -50rb");
-							System.out.print("\nMau Beli Apa? ");
-							data = scan.nextInt();
-							if(data == 1) {
-								if(duit >= uangloop) {
-									duit -= uangloop;
-									loopuang = true;
-									System.out.println("Terbeli!");
-									System.out.println("Uang Akan Mendatangi mu setiap hari");
-								}
-								else if(duit < uangloop) {
-									System.out.println("Tidak Cukup Uang");
-								}
-							}
-							else if(data == 2) {
-								if(duit >= uangpow) {
-									duit -= uangpow;
-									looppow = true;
-									System.out.println("Terbeli!");
-									System.out.println("Power Bertambah setiap hari");
-								}
-								else if(duit < uangpow) {
-									System.out.println("Tidak Cukup Uang");
-								}
-							}
-							else if(data == 3) {
-								if(duit >= pets) {
-									duit -= pets;
-									kucing = true;
-									System.out.println("Terbeli Yeee");
-									System.out.println("Kucing Unyu Mengikutimu setiap hari");
-								}
-								else if(duit < pets) {
-									System.out.println("Duit Kurang");
-								}
-							}
-							else {
-								break;
-							}
-							
-							
-						}while(true);
-					}
-					else if(data == 3) {
-						do {
-							System.out.println("====  NEXT  ====");
-							System.out.println("-Pindah Ke Yang \nLebih Baik~ -100rb");
-							datastr = scan.nextLine();
-							if(datastr.equals("y")) {
-								if(duit >= nextlvl) {
-									System.out.println("Kamu Memilih Migrasi...");
-									Thread.sleep(2000);
-									System.out.println("Kamu Capek Disini terus...");
-									Thread.sleep(2000);
-									datastr = scan.nextLine();
-									System.out.println("Bye");
-									next = true;
-									break;
-								}
-								else if(duit < nextlvl) {
-									System.out.println("Mungkin Kamu Capek\nTapi Duit Kamu Kurang :v");
-									break;
-								}
-							}
-							
-						}while(true);
+					else if(level < 3) {
+						System.out.println("TiDAk BiSA MASUk");
+						System.out.println("PERSYARATAN TiDAk\nTERPENUhi");
 					}
 					
+				}
+				else if(d.equals("mine")) {
+					if(level >= 3) {
+						System.out.println("Kamu Memasuki Zona Mining");
+					}
 				}
 				else if(d.equals("hunt")) {
 					System.out.println("\n Kamu ngehunt..");
@@ -881,10 +920,12 @@ public class Permainan_1 {
 						System.out.println("===Strong Potion===  ++8pow");
 						System.out.println("===Heal Potion=====  ++5health(per)");
 						System.out.println("=Sword{}===========  ++8pow(per)");
+						System.out.println("===     Cart    ===  ++Mine");
 						System.out.println("\n==Cheer Potion=== 10rb");
-						System.out.println("==Strong Potion=== 20rb");
-						System.out.println("==Life Potion===== 30rb");
-						System.out.println("==Sword==========> 30rb");
+						System.out.println("==Strong Potion===  20rb");
+						System.out.println("==Life Potion=====  30rb");
+						System.out.println("==Sword==========>  30rb");
+						System.out.println("==     Cart    ===  40rb");
 						System.out.println("\nMau Beli Apa? ");
 						String player = scan.nextLine().toLowerCase();
 						if(player.equals("cheer potion")) {
@@ -1040,6 +1081,50 @@ public class Permainan_1 {
 								
 						    }
 						}
+						else if(player.equals("cart")) {
+							if(cartbool = false) {
+								if(duit >= cart) {
+									duit -= cart;
+									Thread.sleep(2000);
+									System.out.println("Transaksi Berhasil");
+									cartbool = true;
+									System.out.print("Mau Beli Lagi?y/n  ");
+									String data1 = scan.nextLine();
+									if(data1.equals("y")) {
+										
+									}
+									else if(data1.equals("n")) {
+										break;
+									}
+								}
+								else if(duit < cart) {
+									System.out.println("Transaksi gagal");
+									Thread.sleep(2000);
+									System.out.println("Duit anda tidak cukup(duit kamu = "+duit+")");
+									Thread.sleep(2000);
+									System.out.println("Mau Beli Yang Lain?");
+									String data1 = scan.next();
+									int loop5 = 0;
+									do {
+										if(data1.equals("n")) {
+											t = 1;
+											break;
+										}
+										else if(data1.equals("y")) {
+											break;
+										}
+										else {
+											System.out.println("no command..");
+										}							
+										
+									}while(loop5 == 0);
+									
+							    }
+							}
+							else {
+								System.out.println("Kamu Dah Punya Weh");
+							}
+						}
 						else if(player.equals("n")) {
 							break;
 						}
@@ -1054,9 +1139,9 @@ public class Permainan_1 {
 					String data1 = scan.next();
 					if(data1.equals("y")) {
 						System.out.println("Okey :)");
-						x = 1;
 						Thread.sleep(2000);
 						System.out.println("Game di tutup....");
+						return;
 					}
 					else if(data1.equals("n")) {
 						System.out.println("Okeyy");
@@ -1094,10 +1179,16 @@ public class Permainan_1 {
 					duit += 1000;
 				}
 				if(next = true) {
+					nextlv = true;
 					break;
 				}
+				if(lvl == 10) {
+					lvl = 0;
+					level += 1;
+				}
+				lvl += 1;
 				token = 1;
-			}while(x == 0);
+			}while(true);
 		}
 		
 		else {
@@ -1106,6 +1197,7 @@ public class Permainan_1 {
 			System.out.println("Oke...");
 			return;
 		}
+		
 		System.out.println("Kamu Akhirnya Menang...");
 		Thread.sleep(2000);
 		System.out.print("Ini Pass kamu =");
@@ -1125,6 +1217,8 @@ public class Permainan_1 {
 		System.out.print("..");
 		Thread.sleep(1000);
 		System.out.print("bye");
+			
+		
 		
 		
 
