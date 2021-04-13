@@ -8,9 +8,6 @@ public class Permainan_Java_1 {
 		
 		Scanner scan = new Scanner(System.in);
 		int x = 0;
-		long pow = 0;
-		long senang = 0;
-		long duit = 0;
 		
 		System.out.println("Kalo mau keluar ketik 'k'.\n");
 		Thread.sleep(2000);
@@ -18,20 +15,26 @@ public class Permainan_Java_1 {
 		System.out.println("\nMulaikan? y/n");
 		String c = scan.next();
 		if(c.equals("y")) {
-			long cheer = 10000;
-			long strong = 20000; 
+			long pow = 0;
+			long senang = 0;
+			long duit = 0;
+			int ch = 0;
+			int st = 0;
+			long str = 0;
+			long kes = 0;
+			int cheer = 10000;
+			int strong = 20000; 
+			int sword = 30000;
 			
-			int str = 0;
-			int kes = 0;
-			pow += str;
-			senang += kes;
 			System.out.println("Di hari yang cerah... mau ngapain ya?\n");
 			Thread.sleep(2000);			
 			do {
+				pow += str;
+				senang += kes;
 				System.out.println("Fish/Chop/Check(Pow & Kesenangan)");
 				System.out.print("Mau ngapain?f/c/check/shop = ");
 				Thread.sleep(1000);
-				String d = scan.next();
+				String d = scan.nextLine();
 				if(d.equals("f")) {
 					pow += 1;
 					senang += 2;
@@ -52,20 +55,138 @@ public class Permainan_Java_1 {
 					System.out.println("Duit kamu "+"Rp."+duit);
 				}
 				else if(d.equals("shop")) {
-					System.out.println("===Cheer Potion====  ++4kes");
-					System.out.println("===Strong Potion===  ++4pow");
-					System.out.println("=Sword{}===========  ++3pow(per)");
-					
-					System.out.println("==Cheer Potion=== 10rb");
-					System.out.println("==Strong Potion=== 20rb");
-					System.out.println("==Sword==========> 25rb");
-					System.out.println("Mau Beli Apa? ");
-					String player = scan.nextLine().toLowerCase();
-					if(player.equals("cheer potion")) {
-						if(duit >= )
-					}
-					
-				}
+					int t = 0;
+					do{
+						System.out.println("===Cheer Potion====  ++8kes");
+						System.out.println("===Strong Potion===  ++8pow");
+						System.out.println("=Sword{}===========  ++8pow(per)");
+						
+						System.out.println("==Cheer Potion=== 10rb");
+						System.out.println("==Strong Potion=== 20rb");
+						System.out.println("==Sword==========> 30rb");
+						System.out.println("Mau Beli Apa? ");
+						String player = scan.nextLine().toLowerCase();
+						if(player.equals("cheer potion")) {
+							if(duit >= cheer) {
+								duit -= cheer;
+								Thread.sleep(2000);
+								System.out.println("Transaksi Berhasil");
+								ch += 8;
+								System.out.print("Mau Beli Lagi?y/n  ");
+								String data = scan.nextLine();
+								if(data.equals("y")) {
+									
+								}
+								else if(data.equals("n")) {
+									break;
+								}
+							}
+							else if(duit < cheer) {
+								System.out.println("Transaksi gagal");
+								Thread.sleep(2000);
+								System.out.println("Duit anda tidak cukup(duit = "+duit+")");
+								Thread.sleep(2000);
+								System.out.println("Mau Beli Yang Lain?");
+								String data = scan.next();
+								int loop5 = 0;
+								do {
+									if(data.equals("n")) {
+										t = 1;
+										break;
+									}
+									else if(data.equals("y")) {
+										break;
+									}
+									else {
+										System.out.println("no command..");
+									}							
+									
+								}while(loop5 == 0);
+							}
+						}
+						else if(player.equals("strong potion")) {
+							if(duit >= strong) {
+								duit -= strong;
+								Thread.sleep(2000);
+								System.out.println("Transaksi Berhasil");
+								st += 8;
+								System.out.print("Mau Beli Lagi?y/n  ");
+								String data = scan.nextLine();
+								if(data.equals("y")) {
+									
+								}
+								else if(data.equals("n")) {
+									break;
+								}
+							}
+							else if(duit < cheer) {
+								System.out.println("Transaksi gagal");
+								Thread.sleep(2000);
+								System.out.println("Duit anda tidak cukup(duit kamu = "+duit+")");
+								Thread.sleep(2000);
+								System.out.println("Mau Beli Yang Lain?");
+								String data = scan.next();
+								int loop5 = 0;
+								do {
+									if(data.equals("n")) {
+										t = 1;
+										break;
+									}
+									else if(data.equals("y")) {
+										break;
+									}
+									else {
+										System.out.println("no command..");
+									}							
+									
+								}while(loop5 == 0);
+							}
+						}
+						else if(player.equals("sword")) {
+							if(duit >= sword) {
+								duit -= sword;
+								Thread.sleep(2000);
+								System.out.println("Transaksi Berhasil");
+								pow += 8;
+								System.out.print("Mau Beli Lagi?y/n  ");
+								String data = scan.nextLine();
+								if(data.equals("y")) {
+									
+								}
+								else if(data.equals("n")) {
+									break;
+								}
+							}
+							else if(duit < sword) {
+								System.out.println("Transaksi gagal");
+								Thread.sleep(2000);
+								System.out.println("Duit anda tidak cukup(duit kamu = "+duit+")");
+								Thread.sleep(2000);
+								System.out.println("Mau Beli Yang Lain?");
+								String data = scan.next();
+								int loop5 = 0;
+								do {
+									if(data.equals("n")) {
+										t = 1;
+										break;
+									}
+									else if(data.equals("y")) {
+										break;
+									}
+									else {
+										System.out.println("no command..");
+									}							
+									
+								}while(loop5 == 0);
+								
+						    }
+						}
+						else {
+							System.out.println("maaf tidak di temukan perintah");
+						}
+					}while(t == 0);
+				}	
+				
 				else if(d.equals("k")) {
 					System.out.print("Yakin Mau Keluar? :(\ny/n ");
 					String data = scan.next();
@@ -86,7 +207,21 @@ public class Permainan_Java_1 {
 				else {
 					System.out.println("Tidak dikenali perintah\n\n");
 				}
+				kes = 0;
+				str = 0;
+				if(ch > 0) {
+					kes += ch;
+				}
+				else if(ch == 0){
+					kes = 0;
+				}
 				
+				if(st > 0) {
+					str += st;
+				}
+				else if(st == 0){
+					str = 0;
+				}
 				
 			}while(x == 0);
 		}
