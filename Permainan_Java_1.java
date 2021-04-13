@@ -14,7 +14,7 @@ public class Permainan_Java_1 {
 		System.out.println("Kalo mau keluar ketik 'k'.\n");
 		Thread.sleep(2000);
 		System.out.println("Selamat Datang Di Permainan Kuuuu (Ridwan.Author)");
-		System.out.println("\nMulaikan? y/n");
+		System.out.print("\nMulaikan? y/n  ");
 		String c = scan.nextLine();
 		if(c.equals("y")) {
 			long duit = 0;
@@ -31,6 +31,7 @@ public class Permainan_Java_1 {
 			int health = 10;
 			int time;
 			int enemy;
+			int token = 1;
 			
 			System.out.println("Di hari yang cerah... mau ngapain ya?\n");
 			Thread.sleep(2000);			
@@ -38,16 +39,25 @@ public class Permainan_Java_1 {
 				int ela = 3;
 				int ena = 5;
 				int esa = 10;
+				int had1 = 20;
+				int had2 = 30;
+				int had3 = 40;
 				int elh = 15;
 				int enh = 20;
 				int esh = 25;
+				int aad1 = 15;
+				int aad2 = 25;
+				int aad3 = 30;
 				int reward1;
 				int reward2;
 				int reward3;
+				int rewardad1;
+				int rewardad2;
+				int rewardad3;
 				pow += str;
 				senang += kes;
 				System.out.println("Fish/Chop/Check(Pow & Kesenangan)");
-				System.out.print("Mau ngapain?f/c/check/shop = ");
+				System.out.print("Mau ngapain?F/C/Check/Shop/Hunt\n/HuntAdvanced/HuntExpert/magic shop = ");
 				Thread.sleep(1000);
 				String d = scan.nextLine();
 				if(d.equals("f")) {
@@ -59,16 +69,19 @@ public class Permainan_Java_1 {
 				}
 				else if(d.equals("c")) {
 					pow += 2;
-					duit += 2000;
+					duit += 3000;
+					health -= 2;
 					System.out.println("huuft sangat Melelahkan");
 					System.out.println(" pow +2\n");
-					System.out.println("Duit bertambah 2");
+					System.out.println("capek banget... health-2");
+					System.out.println("Duit bertambah 3");
 					
 				}
 				else if(d.equals("check")) {
 					System.out.println("power kamu = "+pow+"\n"+"kesenangan kamu = "+senang+"\n");
 					System.out.println("Duit kamu "+"Rp."+duit);
 					System.out.println("Darah kamu = "+health);
+					System.out.println("Token sekarang = "+token);
 				}
 				else if(d.equals("hunt")) {
 					System.out.println("\n Kamu ngehunt..");
@@ -301,7 +314,379 @@ public class Permainan_Java_1 {
 					}
 				
 					
-				   }
+			    }
+				else if(d.equals("hunt advanced")) {
+					int loopad = 0;
+					do {
+						if(token >= 5) {
+							System.out.println("Kamu Memasuki Wilayah Advanced");
+							Thread.sleep(2000);
+							System.out.println("Kamu dah siap?");
+							String data = scan.nextLine().toLowerCase();
+							if(data.equals("y")){
+								System.out.println("Okee");
+								Thread.sleep(2000);
+								System.out.println("Kamu Mencari Musuh");
+								time = 1 + ran.nextInt(3);
+								Thread.sleep(time);
+								System.out.println("Sudah Ketemu!");
+								enemy = 1 + ran.nextInt(6);
+								if(enemy >= 1 && enemy <= 3) {
+									System.out.println("Kamu Bertemu Musuh Ez");
+									Thread.sleep(2000);
+									System.out.println("Musuh Akan Menyerang");
+									health -= aad1;
+									if(health <= 0) {
+										System.out.println("Kamu Kalah :(");
+										Thread.sleep(2000);
+										System.out.println("Kamu Pun Mati...");
+										Thread.sleep(2000);
+										System.out.println("Sorry..");
+										Thread.sleep(1000);
+										System.out.println("Game Di Tutup...");
+										return;
+									}
+									else {
+										System.out.println("\ndarah kamu sekarang "+health+" -"+aad1+"!");
+										Thread.sleep(2000);
+									}
+									System.out.println("Waktu nya menyerang!!");
+									int power = pow + ran.nextInt(pow+4);
+									if(power >= (pow+2)) {
+										System.out.println("\nCRITICAL!\n");
+										had1 -= pow;
+										if(esh <= 0) {
+											System.out.println("Musuh Normal Kalah Dan Kamu Menang Yey!!");
+											System.out.println("===Result===");
+											rewardad1 = 1 + ran.nextInt(3);
+											if(rewardad1 == 1) {
+												System.out.println("--50Ribu");
+												System.out.println("--40Pow");
+												System.out.println("--45Kes");
+												duit += 50000;
+												pow += 40;
+												senang += 45;
+												System.out.println("\nKamu Keren...\nKamu Kembali ke tempat asal");
+												Thread.sleep(3000);
+												break;
+											}
+											else if(rewardad1 == 2) {
+												System.out.println("--55Ribu");
+												System.out.println("--45Pow");
+												System.out.println("--50Kes");
+												duit += 55000;
+												pow += 45;
+												senang += 50;
+												System.out.println("\nKamu Jago...\nKamu Kembali ke tempat asal");
+												Thread.sleep(3000);
+												break;
+											}
+											else if(rewardad1 == 3) {
+												System.out.println("--60Ribu");
+												System.out.println("--50Pow");
+												System.out.println("--65Kes");
+												duit += 60000;
+												pow += 50;
+												senang += 65;
+												System.out.println("\nKamu Jago...\nKamu Kembali ke tempat asal");
+												Thread.sleep(3000);
+												break;
+											
+										   } 
+									    }
+										else {
+											System.out.println("Darah Musuh "+had1+" -"+pow);
+										}
+									}
+									else if(power < (pow+2)) {
+										had1 -= pow;
+										if(esh <= 0) {
+											System.out.println("Musuh Normal Kalah Dan Kamu Menang Yey!!");
+											System.out.println("===Result===");
+											rewardad1 = 1 + ran.nextInt(3);
+											if(rewardad1 == 1) {
+												System.out.println("--50Ribu");
+												System.out.println("--40Pow");
+												System.out.println("--45Kes");
+												duit += 50000;
+												pow += 40;
+												senang += 45;
+												System.out.println("\nKamu Keren...\nKamu Kembali ke tempat asal");
+												Thread.sleep(3000);
+												break;
+											}
+											else if(rewardad1 == 2) {
+												System.out.println("--55Ribu");
+												System.out.println("--45Pow");
+												System.out.println("--50Kes");
+												duit += 55000;
+												pow += 45;
+												senang += 50;
+												System.out.println("\nKamu Jago...\nKamu Kembali ke tempat asal");
+												Thread.sleep(3000);
+												break;
+											}
+											else if(rewardad1 == 3) {
+												System.out.println("--60Ribu");
+												System.out.println("--50Pow");
+												System.out.println("--65Kes");
+												duit += 60000;
+												pow += 50;
+												senang += 65;
+												System.out.println("\nKamu Jago...\nKamu Kembali ke tempat asal");
+												Thread.sleep(3000);
+												break;
+											
+										   } 
+									    }
+									}
+								}
+								else if(enemy >= 4 && enemy <= 5 ) {
+									System.out.println("Kamu Bertemu Musuh Normal!");
+									Thread.sleep(2000);
+									System.out.println("Musuh Akan Menyerang");
+									health -= aad2;
+									if(health <= 0) {
+										System.out.println("Kamu Kalah :(");
+										Thread.sleep(2000);
+										System.out.println("Kamu Pun Mati...");
+										Thread.sleep(2000);
+										System.out.println("Sorry..");
+										Thread.sleep(1000);
+										System.out.println("Game Di Tutup...");
+										return;
+									}
+									else {
+										System.out.println("\ndarah kamu sekarang "+health+" -"+aad2+"!");
+										Thread.sleep(2000);
+									}
+									System.out.println("Waktu nya menyerang!!");
+									int power = pow + ran.nextInt(pow+4);
+									if(power >= (pow+2)) {
+										System.out.println("\nCRITICAL!\n");
+										had2 -= pow;
+										if(esh <= 0) {
+											System.out.println("Musuh Normal Kalah Dan Kamu Menang Yey!!");
+											System.out.println("===Result===");
+											rewardad2 = 1 + ran.nextInt(3);
+											if(rewardad2 == 1) {
+												System.out.println("--60Ribu");
+												System.out.println("--50Pow");
+												System.out.println("--55Kes");
+												duit += 60000;
+												pow += 50;
+												senang += 55;
+												System.out.println("\nKamu Keren...\nKamu Kembali ke tempat asal");
+												Thread.sleep(3000);
+												break;
+											}
+											else if(rewardad2 == 2) {
+												System.out.println("--65Ribu");
+												System.out.println("--53Pow");
+												System.out.println("--65Kes");
+												duit += 65000;
+												pow += 53;
+												senang += 65;
+												System.out.println("\nKamu Jago...\nKamu Kembali ke tempat asal");
+												Thread.sleep(3000);
+												break;
+											}
+											else if(rewardad2 == 3) {
+												System.out.println("--70Ribu");
+												System.out.println("--55Pow");
+												System.out.println("--73Kes");
+												duit += 70000;
+												pow += 55;
+												senang += 73;
+												System.out.println("\nKamu Jago...\nKamu Kembali ke tempat asal");
+												Thread.sleep(3000);
+												break;
+											
+										   } 
+									    }
+										else {
+											System.out.println("Darah Musuh "+had2+" -"+pow);
+										}
+									}
+									else if(power < (pow+2)) {
+										had2 -= pow;
+										if(esh <= 0) {
+											System.out.println("Musuh Normal Kalah Dan Kamu Menang Yey!!");
+											System.out.println("===Result===");
+											rewardad2 = 1 + ran.nextInt(3);
+											if(rewardad2 == 1) {
+												System.out.println("--60Ribu");
+												System.out.println("--50Pow");
+												System.out.println("--55Kes");
+												duit += 60000;
+												pow += 50;
+												senang += 55;
+												System.out.println("\nKamu Keren...\nKamu Kembali ke tempat asal");
+												Thread.sleep(3000);
+												break;
+											}
+											else if(rewardad2 == 2) {
+												System.out.println("--65Ribu");
+												System.out.println("--53Pow");
+												System.out.println("--65Kes");
+												duit += 65000;
+												pow += 53;
+												senang += 65;
+												System.out.println("\nKamu Jago...\nKamu Kembali ke tempat asal");
+												Thread.sleep(3000);
+												break;
+											}
+											else if(rewardad2 == 3) {
+												System.out.println("--70Ribu");
+												System.out.println("--55Pow");
+												System.out.println("--73Kes");
+												duit += 70000;
+												pow += 55;
+												senang += 73;
+												System.out.println("\nKamu Jago...\nKamu Kembali ke tempat asal");
+												Thread.sleep(3000);
+												break;
+											
+										   } 
+									    }
+									}
+								}
+								else if(enemy == 6) {
+									System.out.println("Kamu Bertemu Musuh Kuat!!");
+									Thread.sleep(2000);
+									System.out.println("Musuh Akan Menyerang!!");
+									health -= aad3;
+									if(health <= 0) {
+										System.out.println("Kamu Kalah :(");
+										Thread.sleep(2000);
+										System.out.println("Kamu Pun Mati...");
+										Thread.sleep(2000);
+										System.out.println("Sorry..");
+										Thread.sleep(1000);
+										System.out.println("Game Di Tutup...");
+										return;
+									}
+									else {
+										System.out.println("\ndarah kamu sekarang "+health+" -"+aad3+"!");
+										Thread.sleep(2000);
+									}
+									System.out.println("Waktu nya menyerang!!");
+									int power = pow + ran.nextInt(pow+4);
+									if(power >= (pow+2)) {
+										System.out.println("\nCRITICAL!\n");
+										had3 -= pow;
+										if(esh <= 0) {
+											System.out.println("Musuh Normal Kalah Dan Kamu Menang Yey!!");
+											System.out.println("===Result===");
+											rewardad3 = 1 + ran.nextInt(3);
+											if(rewardad3 == 1) {
+												System.out.println("--80Ribu");
+												System.out.println("--60Pow");
+												System.out.println("--75Kes");
+												duit += 80000;
+												pow += 60;
+												senang += 75;
+												System.out.println("\nKamu Keren...\nKamu Kembali ke tempat asal");
+												Thread.sleep(3000);
+												break;
+											}
+											else if(rewardad3 == 2) {
+												System.out.println("--87Ribu");
+												System.out.println("--65Pow");
+												System.out.println("--80Kes");
+												duit += 87000;
+												pow += 65;
+												senang += 80;
+												System.out.println("\nKamu Jago...\nKamu Kembali ke tempat asal");
+												Thread.sleep(3000);
+												break;
+											}
+											else if(rewardad3 == 3) {
+												System.out.println("--90Ribu");
+												System.out.println("--75Pow");
+												System.out.println("--90Kes");
+												duit += 90000;
+												pow += 75;
+												senang += 90;
+												System.out.println("\nKamu Jago...\nKamu Kembali ke tempat asal");
+												Thread.sleep(3000);
+												break;
+											
+										   } 
+									    }
+										else {
+											System.out.println("Darah Musuh "+had3+" -"+pow);
+										}
+									}
+									else if(power < (pow+2)) {
+										had3 -= pow;
+										if(esh <= 0) {
+											System.out.println("Musuh Normal Kalah Dan Kamu Menang Yey!!");
+											System.out.println("===Result===");
+											rewardad1 = 1 + ran.nextInt(3);
+											if(rewardad1 == 1) {
+												System.out.println("--50Ribu");
+												System.out.println("--40Pow");
+												System.out.println("--45Kes");
+												duit += 50000;
+												pow += 40;
+												senang += 45;
+												System.out.println("\nKamu Keren...\nKamu Kembali ke tempat asal");
+												Thread.sleep(3000);
+												break;
+											}
+											else if(rewardad1 == 2) {
+												System.out.println("--55Ribu");
+												System.out.println("--45Pow");
+												System.out.println("--50Kes");
+												duit += 55000;
+												pow += 45;
+												senang += 50;
+												System.out.println("\nKamu Jago...\nKamu Kembali ke tempat asal");
+												Thread.sleep(3000);
+												break;
+											}
+											else if(rewardad1 == 3) {
+												System.out.println("--60Ribu");
+												System.out.println("--50Pow");
+												System.out.println("--65Kes");
+												duit += 60000;
+												pow += 50;
+												senang += 65;
+												System.out.println("\nKamu Jago...\nKamu Kembali ke tempat asal");
+												Thread.sleep(3000);
+												break;
+											
+										   } 
+									    }
+									}
+								}
+							}
+						}
+						else {
+							System.out.println("Kamu Tidak Bisa Masuk..");
+							Thread.sleep(2000);
+							System.out.println("Token kamu tidak mencukupi(butuh 5 token)");
+							Thread.sleep(3000);
+							break;
+						}
+					}while(loopad == 0);
+				}
+				else if(d.equals("hunt expert")) {
+					int loophuntex = 0;
+					do {
+						if(token >= 8) {
+							System.out.println("Kamu Memasuki Wilayah Expert");
+						}
+						else {
+							System.out.println("Kamu Tidak Bisa Masuk..");
+							Thread.sleep(2000);
+							System.out.println("Token kamu tidak mencukupi(butuh 8 token)");
+							Thread.sleep(3000);
+							break;
+						}
+					}while(loophuntex == 0);
+				}
 				else if(d.equals("shop")) {
 					int t = 0;
 					do{
@@ -512,6 +897,7 @@ public class Permainan_Java_1 {
 					str = 0;
 				}
 				
+				token = 1;
 			}while(x == 0);
 		}
 		
