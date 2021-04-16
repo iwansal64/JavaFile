@@ -4,6 +4,52 @@ import java.util.Scanner;
 import java.util.Random;
 
 public class RpgAdv {
+	
+	//Statistik Player
+	static long duit = 0;
+	static int pow = 0;
+	static int senang = 0;
+	static int maxhealth = 10;
+	static int health = maxhealth;
+	static int ch = 0;
+	static int st = 0;
+	static int str = 0;
+	static int kes = 0;
+	static int magicpow = 0;
+	static int level = 0;
+	static int lvl = 0;
+	static int permata = 0;
+	static int mutiara = 0;
+	static int ruby = 0;
+	static int rubynow = 1;
+	static boolean maxlevel = false;
+	static boolean area2 = false;
+	
+	//Harga Harga
+	static int cheer = 10000;
+	static int strong = 20000; 
+	static int sword = 30000;
+	static int heal = 15000;
+	static int life = 25000;
+	static int magic = 40000;
+	static int happy = 40000;
+	static int uangloop = 40000;
+	static int uangpow = 40000;
+	static int pets = 50000;
+	static int cart = 40000;
+	static int alat = 30000;
+	static int nextlvl = 100000;
+	
+	//Boolean power & loop
+	static boolean magicbool = false;
+	static boolean powhap = false;
+	static boolean loopuang = false;
+	static boolean looppow = false;
+	static boolean kucing = false;
+	static boolean next = false;
+	static boolean cartbool = false;
+	static boolean alatbool = false;
+	static String nama;
 
 	public static void main(String[] args) throws Exception{
 		
@@ -11,11 +57,13 @@ public class RpgAdv {
 		Random ran = new Random();
 		
 		System.out.println("Kalo mau keluar ketik 'k'.\n");
-		Thread.sleep(2000);
+		Thread.sleep(1000);
 		System.out.println("Selamat Datang Di Permainan Kuuuu (Ridwan.Author)");
 		System.out.print("Mulaikan? y/n  ");
 		String c = scan.nextLine();
 		if(c.equals("y")) {
+			System.out.print("\nMasukan Nama kamuu = ");
+			nama = scan.nextLine();
 			Area1();
 		}
 		
@@ -27,9 +75,6 @@ public class RpgAdv {
 		}
 		
 		
-		
-		
-
 	}
 	
 	public static void Area1() throws Exception{
@@ -37,42 +82,10 @@ public class RpgAdv {
 		Scanner scan = new Scanner(System.in);
 		Random ran = new Random();
 		
-		System.out.print("Masukan Nama kamuu = ");
-		String nama = scan.nextLine();
 		
-		//Statistik Player
-		long duit = 0;
-		int pow = 0;
-		int senang = 0;
-		int maxhealth = 10;
-		int health = maxhealth;
-		int ch = 0;
-		int st = 0;
-		int str = 0;
-		int kes = 0;
-		int magicpow = 0;
-		int level = 30;
-		int lvl = 0;
-		int permata = 0;
-		int mutiara = 0;
-		int ruby = 0;
-		int rubynow = 1;
-		boolean maxlevel = false;
 		
-		//Harga Harga
-		int cheer = 10000;
-		int strong = 20000; 
-		int sword = 30000;
-		int heal = 15000;
-		int life = 25000;
-		int magic = 40000;
-		int happy = 40000;
-		int uangloop = 40000;
-		int uangpow = 40000;
-		int pets = 50000;
-		int cart = 40000;
-		int alat = 30000;
-		int nextlvl = 100000;
+		//String Input
+		String datastr;
 		
 		//Randomize Integer
 		int time;
@@ -80,20 +93,6 @@ public class RpgAdv {
 		int token = 1;
 		int mutiararan;
 		int permataran;
-		
-		//String Input
-		String datastr;
-		
-		//Boolean power & loop
-		boolean magicbool = false;
-		boolean powhap = false;
-		boolean loopuang = false;
-		boolean looppow = false;
-		boolean kucing = false;
-		boolean next = false;
-		boolean cartbool = false;
-		boolean alatbool = false;
-		
 		System.out.println("Assalamualaikum....");
 		Thread.sleep(2000);			
 		do {
@@ -148,6 +147,10 @@ public class RpgAdv {
 			int turnmine;
 			int hartamine;
 			
+			//Permata
+			int duitpermata = 0;
+			int duitmutiara = 0;
+			int duitruby = 0;
 			
 			//Enemy Mine Normal
 			//Literal
@@ -166,13 +169,14 @@ public class RpgAdv {
 			int rewardmine2;
 			
 			
-			pow += (magicpow * 2);
-			health += magicpow;
-			senang += (magicpow * 2);
 			pow += str;
 			senang += kes;
-			System.out.println("Fish/Chop/Check(Pow & Kesenangan)");
-			System.out.print("Mau ngapain?F/C/Check/Shop/Hunt\n/HuntAdvanced/HuntExpert/magic shop = ");
+			if(area2 = false) {
+				System.out.println("Fish/Chop/Check(Pow & Kesenangan)/Shop/Hunt/\nHuntAdvance/HuntExpert/Mine/Magic Shop/Tutor");
+			}
+			else if(area2 = true) {
+				System.out.println("Fish/Chop/Check(Pow & Kesenangan)/Shop/Hunt/\nHuntAdvance/HuntExpert/Mine/Magic Shop/Tutor/Area2");
+			}
 			Thread.sleep(1000);
 			String d = scan.nextLine();
 			if(d.equals("f")) {
@@ -235,8 +239,15 @@ public class RpgAdv {
 				System.out.println("1.SHOP(shop)");
 				System.out.println("2.MAGIC SHOP(magic shop)");
 				System.out.println("Di Shop Barang Yang Di Jual\nNormal");
-				System.out.println("Di Magic Shop BArang Yang\nDi Jual Adalah Barang Expert");
+				System.out.println("Di Magic Shop Barang Yang\nDi Jual Adalah Barang Expert");
 				System.out.println("(Note : Magic Shop Terbuka Level 2)");
+				
+				System.out.println("===TUTORIAL POWER====");
+				System.out.println("1.Happy Power");
+				System.out.println("-Setiap Kesenangan Yang Kita Dapat Akan\nDi Konvnsikan Menjadi Power Saat");
+				System.out.println("Terloop(Tanda Tandanya saat ada kalimat 'Fish/Chop/Check' dll");
+				System.out.println("2.Magic Power");
+				System.out.println("-Magic Power HAnya Bisa Dipakai Di Area 2");
 			}
 			else if(d.equals("magic shop")) {
 				if(level >= 2) {
@@ -406,6 +417,50 @@ public class RpgAdv {
 					System.out.println("PERSYARATAN TiDAk\nTERPENUhi");
 				}
 				
+			}
+			else if(d.equals("tool")) {
+				if(alatbool == true) {
+					if(mutiara > 0 || permata > 0 || ruby > 0) {
+						System.out.println("Mau Mecahin Yang Mana?");
+						System.out.println("_Permata = "+permata);
+						System.out.println("_Mutiara = "+mutiara);
+						System.out.println("_Ruby    = "+ruby);
+						String data = scan.nextLine().toLowerCase();
+						if(data.equals("permata")) {
+							if(permata > 0) {
+								System.out.println("Mau Berapa Permata Yang Mau Kamu Pecah");
+								Thread.sleep(2000);
+								int berapapermata = scan.nextInt();
+								if(permata >= berapapermata) {
+									System.out.println("Memecah....");
+									permata -= berapapermata;
+									Thread.sleep(2000);
+									System.out.println("Kamu Memecah "+berapapermata+" Permata");
+									duitpermata += (berapapermata * (100000 + 20000));
+									duit += duitpermata;
+									Thread.sleep(2000);
+									System.out.println("\nKamu Mendapat "+duitpermata);
+								}
+								else {
+									System.out.println("Kamu Punya Permata "+permata);
+									System.out.println("Masih Tidak Cukup");
+								}
+							}
+							else {
+								System.out.println("Permata kamu masih nol!");
+							}
+						}
+						else if(data.equals("mutiara")){
+							if(mutiara > 0) {
+								System.out.println("Mau Berapa Mutiara");
+							}
+						}
+					}
+				}
+				else if(alatbool == false) {
+					System.out.println("Kamu tidak punya alatnya");
+					System.out.println("Beli Di Shop Sana");
+				}
 			}
 			else if(d.equals("mine")) {
 				if(level >= 3 && token >= 10) {
@@ -1467,7 +1522,17 @@ public class RpgAdv {
 					}
 				}while(t == 0);
 			}	
-			
+			else if(d.equals("area2") || d.equals("area 2")) {
+				if(area2 = true) {
+					System.out.println("Kamu Memasuki Area2...");
+					Thread.sleep(2000);
+					Area2();
+				}
+				else if(area2 = false) {
+					System.out.println("Kamu Harus Mencapai Level Max Di Area 1");
+					
+				}
+			}
 			else if(d.equals("k")) {
 				System.out.print("Yakin Mau Keluar? :(\ny/n ");
 				String data1 = scan.next();
@@ -1518,14 +1583,13 @@ public class RpgAdv {
 			}
 			if(level >= 20) {
 				maxlevel = true;
-				magicbool = true;
 			}
 			if(level == 30) {
 				break;
 			}
 			if(health <= 0) {
 				System.out.println("Kamu Mati..");
-				break;
+				return;
 			} 
 			else{
 			}
@@ -1546,9 +1610,14 @@ public class RpgAdv {
 				lvl += 4;
 				token = 10;
 			}
-			else if(level > 16) {
+			else if(level > 16 && level < 30) {
 				lvl += 5;
 				token = 10;
+			}
+			else if(level == 30) {
+				lvl = 0;
+				token += 10;
+				area2 = true;
 			}
 			
 		}while(true);
@@ -1563,9 +1632,28 @@ public class RpgAdv {
 	}
 	
 	public static void Area2() throws Exception{
+		//Constructor
+		Scanner scan = new Scanner(System.in);
+		Random ran = new Random();
+		
+		
+		
 		System.out.println("Memasuki Area2...");
 		Thread.sleep(2000);
-		System.out.print();
+		System.out.println("Selamat datang di Area 2");
+		Thread.sleep(2000);
+		System.out.println("Jika mau keluar ketik 'keluar'");
+		Thread.sleep(2000);
+		System.out.println("Jika mau kembali ke Area 1 ketik area 1");
+		Thread.sleep(1000);
+		System.out.println("Command :");
+		System.out.println("-Magic Area\n-Training\n-TebakanGame\n-Area 1");
+		String data = scan.nextLine().toLowerCase();
+		if(data.equals("area 1")) {
+			System.out.println("Memasuki area 1");
+			Area1();
+		}
+			
 	}
 
 }
