@@ -3,12 +3,25 @@ package cui;
 import java.util.Scanner;
 import java.util.Random;
 
+/*
+ * Created On April 13 2021
+ * 
+ * Tuesday 10:00 am
+ */
+
+/*
+ * 
+ * Author : Ridwan B.S
+ */
+
+
 public class RpgAdv {
 	
 	//Statistik Player
-	static long duit = 0;
 	static int pow = 0;
 	static int senang = 0;
+	static long duit = 0;
+	static int magicStar = 0;
 	static int maxhealth = 10;
 	static int health = maxhealth;
 	static int ch = 0;
@@ -22,8 +35,8 @@ public class RpgAdv {
 	static int mutiara = 0;
 	static int ruby = 0;
 	static int rubynow = 1;
-	static boolean maxlevel = false;
-	static boolean area2 = false;
+	static int maxlevel = 0;
+	private static boolean area2 = false;
 	
 	//Harga Harga
 	static int cheer = 10000;
@@ -177,9 +190,15 @@ public class RpgAdv {
 			else if(area2 = true) {
 				System.out.println("Fish/Chop/Check(Pow & Kesenangan)/Shop/Hunt/\nHuntAdvance/HuntExpert/Mine/Magic Shop/Tutor/Area2");
 			}
+			else {
+				
+			}
 			Thread.sleep(1000);
-			String d = scan.nextLine();
-			if(d.equals("f")) {
+			String d = scan.nextLine().toLowerCase();
+			if (d.isEmpty()){
+				System.out.println("Kenapa empty bos?");
+			}
+			else if(d.equals("f")) {
 				pow += 1;
 				senang += 2;
 				duit += 1000;
@@ -200,10 +219,10 @@ public class RpgAdv {
 				System.out.println("======== Profil =======");
 				System.out.println("Namaewa = "+nama);
 				System.out.println("Token sekarang = "+token);
-				if(maxlevel = true) {
+				if(maxlevel == 1) {
 					System.out.println("|::|LEVEL SUDAH MAX|::|");
 				}
-				else {
+				else if(maxlevel == 0){
 					System.out.println("lvl = "+lvl);
 					System.out.println("Level = "+level);
 				}
@@ -1296,7 +1315,7 @@ public class RpgAdv {
 							System.out.println("Duit anda tidak cukup(duit = "+duit+")");
 							Thread.sleep(2000);
 							System.out.println("Mau Beli Yang Lain?");
-							String data1 = scan.next();
+							String data1 = scan.nextLine();
 							int loop5 = 0;
 							do {
 								if(data1.equals("n")) {
@@ -1338,7 +1357,7 @@ public class RpgAdv {
 							System.out.println("Duit anda tidak cukup(duit kamu = "+duit+")");
 							Thread.sleep(2000);
 							System.out.println("Mau Beli Yang Lain?");
-							String data1 = scan.next();
+							String data1 = scan.nextLine();
 							int loop5 = 0;
 							do {
 								if(data1.equals("n")) {
@@ -1376,7 +1395,7 @@ public class RpgAdv {
 							System.out.println("Duit anda tidak cukup(duit kamu = "+duit+")");
 							Thread.sleep(2000);
 							System.out.println("Mau Beli Yang Lain?");
-							String data1 = scan.next();
+							String data1 = scan.nextLine();
 							int loop5 = 0;
 							do {
 								if(data1.equals("n")) {
@@ -1414,7 +1433,7 @@ public class RpgAdv {
 							System.out.println("Duit anda tidak cukup(duit kamu = "+duit+")");
 							Thread.sleep(2000);
 							System.out.println("Mau Beli Yang Lain?");
-							String data1 = scan.next();
+							String data1 = scan.nextLine();
 							int loop5 = 0;
 							do {
 								if(data1.equals("n")) {
@@ -1452,7 +1471,7 @@ public class RpgAdv {
 							System.out.println("Duit anda tidak cukup(duit kamu = "+duit+")");
 							Thread.sleep(2000);
 							System.out.println("Mau Beli Yang Lain?");
-							String data1 = scan.next();
+							String data1 = scan.nextLine();
 							int loop5 = 0;
 							do {
 								if(data1.equals("n")) {
@@ -1492,7 +1511,7 @@ public class RpgAdv {
 								System.out.println("Duit anda tidak cukup(duit kamu = "+duit+")");
 								Thread.sleep(2000);
 								System.out.println("Mau Beli Yang Lain?");
-								String data1 = scan.next();
+								String data1 = scan.nextLine();
 								int loop5 = 0;
 								do {
 									if(data1.equals("n")) {
@@ -1582,7 +1601,7 @@ public class RpgAdv {
 				level += 1;
 			}
 			if(level >= 20) {
-				maxlevel = true;
+				maxlevel = 1;
 			}
 			if(level == 30) {
 				break;
@@ -1617,7 +1636,10 @@ public class RpgAdv {
 			else if(level == 30) {
 				lvl = 0;
 				token += 10;
-				area2 = true;
+				area2 = false;
+			}
+			else {
+				
 			}
 			
 		}while(true);
@@ -1636,6 +1658,18 @@ public class RpgAdv {
 		Scanner scan = new Scanner(System.in);
 		Random ran = new Random();
 		
+		//Event Handling
+		int Pernah = 0;
+		String command;
+		
+		//Harga-Harga
+		
+		
+		//Training Properties
+		//Not Random
+		
+		//Random
+		int tr;
 		
 		
 		System.out.println("Memasuki Area2...");
@@ -1645,13 +1679,68 @@ public class RpgAdv {
 		System.out.println("Jika mau keluar ketik 'keluar'");
 		Thread.sleep(2000);
 		System.out.println("Jika mau kembali ke Area 1 ketik area 1");
-		Thread.sleep(1000);
-		System.out.println("Command :");
-		System.out.println("-Magic Area\n-Training\n-TebakanGame\n-Area 1");
-		String data = scan.nextLine().toLowerCase();
-		if(data.equals("area 1")) {
+		if(Pernah == 0) {
+			Thread.sleep(1000);
+			System.out.println("Command :");
+			System.out.println("-Magic Area\n-Training\n-TebakanGame\n-Area 1");
+			Pernah = 1;
+		}
+		else if(Pernah == 1) {
+			System.out.print("Command = ");
+		}
+		String data = scan.nextLine();
+		if(data.equalsIgnoreCase("Area 1")) {
 			System.out.println("Memasuki area 1");
 			Area1();
+		}
+		else if(data.equalsIgnoreCase("Training")) {
+			tr = 1 + ran.nextInt(5);
+			if(tr == 1) {
+				Thread.sleep(2000);
+				System.out.println("(*) Ini Namanya Apa?");
+				command = scan.nextLine();
+				if(command.equalsIgnoreCase("Bintang")) {
+					System.out.println("Kamu Benar");
+					System.out.println("Duit +50000");
+					duit += 50000;
+				}
+				else if(command.equalsIgnoreCase("Perkalian")) {
+					System.out.println("Sangat Tepat Sekali");
+					System.out.println("Magic Star +1!");
+					magicStar += 1;
+				}
+				else {
+					System.out.println("Salah!");
+				}
+			}
+			else if(tr == 2) {
+				Thread.sleep(2000);
+				System.out.println("llili");
+				for(int i = 0;i<10;i++) {
+					if(i == 0) {
+						
+					}
+				}
+			}
+		}
+		else if(data.equalsIgnoreCase("Magic Area") || data.equalsIgnoreCase("MagicArea")){
+			System.out.println("Magic Area..");
+			Thread.sleep(2000);
+			System.out.println("Mau Melatih Kekuatan Apa?");
+			Thread.sleep(1000);
+			System.out.println("1.Api");
+			System.out.println("2.Air");
+			System.out.println("3.Angin");
+			data = scan.nextLine();
+			if(data.equalsIgnoreCase("Api")) {
+				System.out.println("Api");
+			}
+			else if(data.equalsIgnoreCase("Air")) {
+				System.out.println("Air");
+			}
+			else if(data.equalsIgnoreCase("Angin")) {
+				System.out.println("Angin");
+			}
 		}
 			
 	}
