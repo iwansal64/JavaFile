@@ -1,4 +1,4 @@
-package cui;
+package CLI;
 
 import java.util.Scanner;
 import java.util.Random;
@@ -18,6 +18,7 @@ import java.util.Random;
 public class RpgAdv {
 	
 	//Statistik Player
+	//Integer
 	static int pow = 0;
 	static int senang = 0;
 	static long duit = 0;
@@ -36,7 +37,23 @@ public class RpgAdv {
 	static int ruby = 0;
 	static int rubynow = 1;
 	static int maxlevel = 0;
-	private static boolean area2 = false;
+	static int apiExp = 0;
+	static int airExp = 0;
+	static int anginExp = 0;
+	static int lvlapi = 0;
+	static int lvlangin = 0;
+	static int lvlair = 0;
+	static int powerApi;
+	static int powerAir;
+	static int powerAngin;
+	
+	//Boolean
+	public static boolean area1 = true;
+	public static boolean area2 = false;
+	public static boolean area3 = false;
+	public static boolean api = false;
+	public static boolean air = false;
+	public static boolean angin = false;
 	
 	//Harga Harga
 	static int cheer = 10000;
@@ -198,14 +215,14 @@ public class RpgAdv {
 			if (d.isEmpty()){
 				System.out.println("Kenapa empty bos?");
 			}
-			else if(d.equals("f")) {
+			else if(d.equals("f") || d.equals("fish")) {
 				pow += 1;
 				senang += 2;
 				duit += 1000;
 				System.out.println("Memancing sangat menyenangkan kamu!");
 				System.out.println(" pow +1\nsenang +2\nduit +1\n");
 			}
-			else if(d.equals("c")) {
+			else if(d.equals("c") || d.equals("chop")) {
 				pow += 3;
 				duit += 3000;
 				health -= 2;
@@ -226,8 +243,7 @@ public class RpgAdv {
 					System.out.println("lvl = "+lvl);
 					System.out.println("Level = "+level);
 				}
-				System.out.println("\n======= Keperluan =====");
-				System.out.println("power kamu = "+pow+"\n"+"kesenangan kamu = "+senang+"\n");
+				System.out.println("power kamu = "+pow+"\nkesenangan kamu = "+senang);
 				System.out.println("Duit kamu "+"Rp."+duit);
 				System.out.println("Darah kamu = "+health);
 				System.out.println("\n======  Power  ======");
@@ -677,233 +693,236 @@ public class RpgAdv {
 				}
 			}
 			else if(d.equals("hunt")) {
-				System.out.println("\n Kamu ngehunt..");
-				Thread.sleep(2000);
-				System.out.println("\nkamu yakin?...");
-				System.out.println("dengan kesenangan = "+senang);
-				System.out.println("dan Kekuatan = "+pow);
-				String data = scan.nextLine();
-				if(data.equals("y")) {
-					System.out.println("Oke kalo kamu yakin");
-					System.out.println("Kita ngeHunt!");
-					time = 1 + ran.nextInt(6);
-					time *= 1000;
-					Thread.sleep(time);
-					enemy = 1 + ran.nextInt(6);
-					if(enemy >= 1 && enemy <= 3) {
-						do {
-							System.out.println("Kamu Bertemu musuh lemah");
-							Thread.sleep(2000);
-							System.out.println("kamu di serang");
-							health -= ela;
-							Thread.sleep(2000);
-							if(health == 0) {
-								System.out.println("Kamu Kalah :(");
+				if(token < 3) {
+					System.out.println("Kekurangan Token");
+				}
+				else if(token > 3) {
+					System.out.println("\nKamu ngehunt..");
+					Thread.sleep(2000);
+					System.out.println("\nkamu yakin?...");
+					System.out.println("dengan kesenangan = "+senang);
+					System.out.println("dan Kekuatan = "+pow);
+					String data = scan.nextLine();
+					if(data.equals("y")) {
+						System.out.println("Oke kalo kamu yakin");
+						System.out.println("Kita ngeHunt!");
+						time = 1 + ran.nextInt(6);
+						time *= 1000;
+						Thread.sleep(time);
+						enemy = 1 + ran.nextInt(6);
+						if(enemy >= 1 && enemy <= 3) {
+							do {
+								System.out.println("Kamu Bertemu musuh lemah");
 								Thread.sleep(2000);
-								System.out.println("Kamu Pun Mati...");
+								System.out.println("kamu di serang");
+								health -= ela;
 								Thread.sleep(2000);
-								System.out.println("Sorry..");
-								Thread.sleep(1000);
-								System.out.println("Game Di Tutup...");
-								return;
-							}
-							else {
-								System.out.println("\ndarah kamu sekarang "+health+" -"+ela);
+								if(health == 0) {
+									System.out.println("Kamu Kalah :(");
+									Thread.sleep(2000);
+									System.out.println("Kamu Pun Mati...");
+									Thread.sleep(2000);
+									System.out.println("Sorry..");
+									Thread.sleep(1000);
+									System.out.println("Game Di Tutup...");
+									return;
+								}
+								else {
+									System.out.println("\ndarah kamu sekarang "+health+" -"+ela);
+									Thread.sleep(2000);
+								}
+								System.out.println("Sekarang Giliran kamu yang menyerang");
+								elh -= pow;
 								Thread.sleep(2000);
-							}
-							System.out.println("Sekarang Giliran kamu yang menyerang");
-							elh -= pow;
-							Thread.sleep(2000);
-							if(elh <= 0) {
-								System.out.println("Musuh Kalah Dan Kamu Menang Yey!!");
-								System.out.println("===Result===");
-								reward1 = 1 + ran.nextInt(3);
-								if(reward1 == 1) {
-									System.out.println("--15Ribu");
-									System.out.println("--10Pow");
-									System.out.println("--20Kes");
-									duit += 15000;
-									pow += 10;
-									senang += 20;
-									System.out.println("\nKamu Keren...\nKamu Kembali ke tempat asal");
-									Thread.sleep(3000);
-									break;
+								if(elh <= 0) {
+									System.out.println("Musuh Kalah Dan Kamu Menang Yey!!");
+									System.out.println("===Result===");
+									reward1 = 1 + ran.nextInt(3);
+									if(reward1 == 1) {
+										System.out.println("--15Ribu");
+										System.out.println("--10Pow");
+										System.out.println("--20Kes");
+										duit += 15000;
+										pow += 10;
+										senang += 20;
+										System.out.println("\nKamu Keren...\nKamu Kembali ke tempat asal");
+										Thread.sleep(3000);
+										break;
+									}
+									else if(reward1 == 2) {
+										System.out.println("--20Ribu");
+										System.out.println("--12Pow");
+										System.out.println("--25Kes");
+										duit += 20000;
+										pow += 12;
+										senang += 25;
+										System.out.println("\nKamu Keren...\nKamu Kembali ke tempat asal");
+										Thread.sleep(3000);
+										break;
+									}
+									else if(reward1 == 3) {
+										System.out.println("--25Ribu");
+										System.out.println("--15Pow");
+										System.out.println("--30Kes");
+										duit += 25000;
+										pow += 15;
+										senang += 30;
+										System.out.println("\nKamu Keren...\nKamu Kembali ke tempat asal");
+										Thread.sleep(3000);
+										break;
+									}
 								}
-								else if(reward1 == 2) {
-									System.out.println("--20Ribu");
-									System.out.println("--12Pow");
-									System.out.println("--25Kes");
-									duit += 20000;
-									pow += 12;
-									senang += 25;
-									System.out.println("\nKamu Keren...\nKamu Kembali ke tempat asal");
-									Thread.sleep(3000);
-									break;
+								else {
+									System.out.println("Darah Musuh "+elh+" -"+pow);
 								}
-								else if(reward1 == 3) {
-									System.out.println("--25Ribu");
-									System.out.println("--15Pow");
-									System.out.println("--30Kes");
-									duit += 25000;
-									pow += 15;
-									senang += 30;
-									System.out.println("\nKamu Keren...\nKamu Kembali ke tempat asal");
-									Thread.sleep(3000);
-									break;
+							}while(true);
+							
+						}
+						
+						else if(enemy >= 4 && enemy <= 5){
+							do {
+								System.out.println("Kamu Bertemu Musuh Normal");
+								Thread.sleep(2000);
+								System.out.println("Kamu Di Serang!!");
+								health -= ena;
+								if(health <= 0) {
+									System.out.println("Kamu Kalah :(");
+									Thread.sleep(2000);
+									System.out.println("Kamu Pun Mati...");
+									Thread.sleep(2000);
+									System.out.println("Sorry..");
+									Thread.sleep(1000);
+									System.out.println("Game Di Tutup...");
+									return;
 								}
-							}
-							else {
-								System.out.println("Darah Musuh "+elh+" -"+pow);
-							}
-						}while(true);
+								else {
+									System.out.println("\ndarah kamu sekarang "+health+" -"+ena);
+									Thread.sleep(2000);
+								}
+								System.out.println("Giliran Kamu Coy Ayoo!");
+								Thread.sleep(2000);
+								System.out.println("Kamuu Menyerang");
+								enh -= pow;
+								if(enh <= 0) {
+									System.out.println("Musuh Normal Kalah Dan Kamu Menang Yey!!");
+									System.out.println("===Result===");
+									reward2 = 1 + ran.nextInt(3);
+									if(reward2 == 1) {
+										System.out.println("--25Ribu");
+										System.out.println("--15Pow");
+										System.out.println("--30Kes");
+										duit += 25000;
+										pow += 15;
+										senang += 30;
+										System.out.println("\nKamu Keren...\nKamu Kembali ke tempat asal");
+										Thread.sleep(3000);
+										break;
+									}
+									else if(reward2 == 2) {
+										System.out.println("--30Ribu");
+										System.out.println("--20Pow");
+										System.out.println("--35Kes");
+										duit += 30000;
+										pow += 20;
+										senang += 35;
+										System.out.println("\nKamu Keren...\nKamu Kembali ke tempat asal");
+										Thread.sleep(3000);
+										break;
+									}
+									else if(reward2 == 3) {
+										System.out.println("--35Ribu");
+										System.out.println("--23Pow");
+										System.out.println("--40Kes");
+										duit += 35000;
+										pow += 23;
+										senang += 40;
+										System.out.println("\nKamu Keren...\nKamu Kembali ke tempat asal");
+										Thread.sleep(3000);
+										break;
+									
+								   } 
+							    }
+								else {
+									System.out.println("Darah Musuh "+enh+" -"+pow);
+								}
+							}while(true);
+						}
+						else {
+							do {
+								System.out.println("Kamu Bertemu Musuh Kuat!");
+								Thread.sleep(2000);
+								System.out.println("Kamu Di Serang!");
+								health -= esa;
+								Thread.sleep(2000);
+								if(health <= 0) {
+									System.out.println("Kamu Kalah :(");
+									Thread.sleep(2000);
+									System.out.println("Kamu Pun Mati...");
+									Thread.sleep(2000);
+									System.out.println("Sorry..");
+									Thread.sleep(1000);
+									System.out.println("Game Di Tutup...");
+									return;
+								}
+								else {
+									System.out.println("\ndarah kamu sekarang "+health+" -"+ena+"!");
+									Thread.sleep(2000);
+								}
+								System.out.println("Ini Waktunya Menyerang!");
+								esh -= pow;
+								Thread.sleep(2000);
+								if(esh <= 0) {
+									System.out.println("Musuh Normal Kalah Dan Kamu Menang Yey!!");
+									System.out.println("===Result===");
+									reward3 = 1 + ran.nextInt(3);
+									if(reward3 == 1) {
+										System.out.println("--30Ribu");
+										System.out.println("--20Pow");
+										System.out.println("--35Kes");
+										duit += 30000;
+										pow += 20;
+										senang += 35;
+										System.out.println("\nKamu Keren...\nKamu Kembali ke tempat asal");
+										Thread.sleep(3000);
+										break;
+									}
+									else if(reward3 == 2) {
+										System.out.println("--40Ribu");
+										System.out.println("--25Pow");
+										System.out.println("--40Kes");
+										duit += 40000;
+										pow += 25;
+										senang += 40;
+										System.out.println("\nKamu Keren...\nKamu Kembali ke tempat asal");
+										Thread.sleep(3000);
+										break;
+									}
+									else if(reward3 == 3) {
+										System.out.println("--50Ribu");
+										System.out.println("--30Pow");
+										System.out.println("--45Kes");
+										duit += 50000;
+										pow += 30;
+										senang += 45;
+										System.out.println("\nKamu Keren...\nKamu Kembali ke tempat asal");
+										Thread.sleep(3000);
+										break;
+									
+								   } 
+							    }
+								else {
+									System.out.println("Darah Musuh "+esh+" -"+pow);
+								}
+							}while(true);
+							
+						}
 						
 					}
 					
-					else if(enemy >= 4 && enemy <= 5){
-						do {
-							System.out.println("Kamu Bertemu Musuh Normal");
-							Thread.sleep(2000);
-							System.out.println("Kamu Di Serang!!");
-							health -= ena;
-							if(health <= 0) {
-								System.out.println("Kamu Kalah :(");
-								Thread.sleep(2000);
-								System.out.println("Kamu Pun Mati...");
-								Thread.sleep(2000);
-								System.out.println("Sorry..");
-								Thread.sleep(1000);
-								System.out.println("Game Di Tutup...");
-								return;
-							}
-							else {
-								System.out.println("\ndarah kamu sekarang "+health+" -"+ena);
-								Thread.sleep(2000);
-							}
-							System.out.println("Giliran Kamu Coy Ayoo!");
-							Thread.sleep(2000);
-							System.out.println("Kamuu Menyerang");
-							enh -= pow;
-							if(enh <= 0) {
-								System.out.println("Musuh Normal Kalah Dan Kamu Menang Yey!!");
-								System.out.println("===Result===");
-								reward2 = 1 + ran.nextInt(3);
-								if(reward2 == 1) {
-									System.out.println("--25Ribu");
-									System.out.println("--15Pow");
-									System.out.println("--30Kes");
-									duit += 25000;
-									pow += 15;
-									senang += 30;
-									System.out.println("\nKamu Keren...\nKamu Kembali ke tempat asal");
-									Thread.sleep(3000);
-									break;
-								}
-								else if(reward2 == 2) {
-									System.out.println("--30Ribu");
-									System.out.println("--20Pow");
-									System.out.println("--35Kes");
-									duit += 30000;
-									pow += 20;
-									senang += 35;
-									System.out.println("\nKamu Keren...\nKamu Kembali ke tempat asal");
-									Thread.sleep(3000);
-									break;
-								}
-								else if(reward2 == 3) {
-									System.out.println("--35Ribu");
-									System.out.println("--23Pow");
-									System.out.println("--40Kes");
-									duit += 35000;
-									pow += 23;
-									senang += 40;
-									System.out.println("\nKamu Keren...\nKamu Kembali ke tempat asal");
-									Thread.sleep(3000);
-									break;
-								
-							   } 
-						    }
-							else {
-								System.out.println("Darah Musuh "+enh+" -"+pow);
-							}
-						}while(true);
-					}
 					else {
-						do {
-							System.out.println("Kamu Bertemu Musuh Kuat!");
-							Thread.sleep(2000);
-							System.out.println("Kamu Di Serang!");
-							health -= esa;
-							Thread.sleep(2000);
-							if(health <= 0) {
-								System.out.println("Kamu Kalah :(");
-								Thread.sleep(2000);
-								System.out.println("Kamu Pun Mati...");
-								Thread.sleep(2000);
-								System.out.println("Sorry..");
-								Thread.sleep(1000);
-								System.out.println("Game Di Tutup...");
-								return;
-							}
-							else {
-								System.out.println("\ndarah kamu sekarang "+health+" -"+ena+"!");
-								Thread.sleep(2000);
-							}
-							System.out.println("Ini Waktunya Menyerang!");
-							esh -= pow;
-							Thread.sleep(2000);
-							if(esh <= 0) {
-								System.out.println("Musuh Normal Kalah Dan Kamu Menang Yey!!");
-								System.out.println("===Result===");
-								reward3 = 1 + ran.nextInt(3);
-								if(reward3 == 1) {
-									System.out.println("--30Ribu");
-									System.out.println("--20Pow");
-									System.out.println("--35Kes");
-									duit += 30000;
-									pow += 20;
-									senang += 35;
-									System.out.println("\nKamu Keren...\nKamu Kembali ke tempat asal");
-									Thread.sleep(3000);
-									break;
-								}
-								else if(reward3 == 2) {
-									System.out.println("--40Ribu");
-									System.out.println("--25Pow");
-									System.out.println("--40Kes");
-									duit += 40000;
-									pow += 25;
-									senang += 40;
-									System.out.println("\nKamu Keren...\nKamu Kembali ke tempat asal");
-									Thread.sleep(3000);
-									break;
-								}
-								else if(reward3 == 3) {
-									System.out.println("--50Ribu");
-									System.out.println("--30Pow");
-									System.out.println("--45Kes");
-									duit += 50000;
-									pow += 30;
-									senang += 45;
-									System.out.println("\nKamu Keren...\nKamu Kembali ke tempat asal");
-									Thread.sleep(3000);
-									break;
-								
-							   } 
-						    }
-							else {
-								System.out.println("Darah Musuh "+esh+" -"+pow);
-							}
-						}while(true);
-						
+						System.out.println("Oke.");
 					}
-					
 				}
-				
-				else {
-					System.out.println("Oke.");
-				}
-			
-				
 		    }
 			else if(d.equals("hunt advanced")) {
 				int loopad = 0;
@@ -1549,7 +1568,8 @@ public class RpgAdv {
 				}
 				else if(area2 = false) {
 					System.out.println("Kamu Harus Mencapai Level Max Di Area 1");
-					
+					Thread.sleep(2000);
+					System.out.println("Dengan Mendapat level 30");
 				}
 			}
 			else if(d.equals("k")) {
@@ -1603,9 +1623,6 @@ public class RpgAdv {
 			if(level >= 20) {
 				maxlevel = 1;
 			}
-			if(level == 30) {
-				break;
-			}
 			if(health <= 0) {
 				System.out.println("Kamu Mati..");
 				return;
@@ -1614,29 +1631,35 @@ public class RpgAdv {
 			}
 			
 			if(level >= 0 && level <= 3) {
-				lvl += 1;
-				token += 1;					
+				lvl += 5;
+				token += 3;					
 			}
 			else if(level >= 4 && level <= 8) {
-				lvl += 2;
+				lvl += 4;
 				token += 2;
 			}
 			else if(level >= 9 && level <= 12) {
 				lvl += 3;
-				token += 3;
+				token += 2;
 			}
 			else if(level >= 13 && level <= 16) {
-				lvl += 4;
-				token = 10;
+				lvl += 2;
+				token = 4;
 			}
 			else if(level > 16 && level < 30) {
-				lvl += 5;
-				token = 10;
+				lvl += 2;
+				token = 5;
 			}
 			else if(level == 30) {
 				lvl = 0;
-				token += 10;
-				area2 = false;
+				token = 10;
+				area2 = true;
+				if(area1 == false) {
+					
+				}
+				else if(area1 == true) {
+					break;
+				}
 			}
 			else {
 				
@@ -1658,18 +1681,22 @@ public class RpgAdv {
 		Scanner scan = new Scanner(System.in);
 		Random ran = new Random();
 		
-		//Event Handling
+		//Area Handling
 		int Pernah = 0;
+		
+		boolean PernahDiUpApi = false;
+		boolean PernahDiUpAir = false;
+		boolean PernahDiUpAangin = false;
+		boolean magic1 = false;
 		String command;
 		
-		//Harga-Harga
 		
-		
-		//Training Properties
-		//Not Random
-		
+		//Training
+		//Rewards
+		int duittr = 50000;
 		//Random
 		int tr;
+		
 		
 		
 		System.out.println("Memasuki Area2...");
@@ -1679,69 +1706,190 @@ public class RpgAdv {
 		System.out.println("Jika mau keluar ketik 'keluar'");
 		Thread.sleep(2000);
 		System.out.println("Jika mau kembali ke Area 1 ketik area 1");
-		if(Pernah == 0) {
-			Thread.sleep(1000);
-			System.out.println("Command :");
-			System.out.println("-Magic Area\n-Training\n-TebakanGame\n-Area 1");
-			Pernah = 1;
-		}
-		else if(Pernah == 1) {
-			System.out.print("Command = ");
-		}
-		String data = scan.nextLine();
-		if(data.equalsIgnoreCase("Area 1")) {
-			System.out.println("Memasuki area 1");
-			Area1();
-		}
-		else if(data.equalsIgnoreCase("Training")) {
-			tr = 1 + ran.nextInt(5);
-			if(tr == 1) {
-				Thread.sleep(2000);
-				System.out.println("(*) Ini Namanya Apa?");
-				command = scan.nextLine();
-				if(command.equalsIgnoreCase("Bintang")) {
-					System.out.println("Kamu Benar");
-					System.out.println("Duit +50000");
-					duit += 50000;
+		do {
+			/* ======== Level Handling ========= */
+			if(level >= 30 && level <= 33) {
+				lvl += 5;					
+			}
+			else if(level >= 34 && level <= 38) {
+				lvl += 4;
+			}
+			else if(level >= 39 && level <= 42) {
+				lvl += 3;
+			}
+			else if(level >= 43 && level <= 46) {
+				lvl += 2;
+			}
+			else if(level > 46 && level < 50) {
+				lvl += 2;
+			}
+			else if(level == 60) {
+				lvl = 0;
+				area3 = true;
+				if(area2 == false) {
+					
 				}
-				else if(command.equalsIgnoreCase("Perkalian")) {
-					System.out.println("Sangat Tepat Sekali");
-					System.out.println("Magic Star +1!");
-					magicStar += 1;
-				}
-				else {
-					System.out.println("Salah!");
+				else if(area1 == true) {
+					break;
 				}
 			}
-			else if(tr == 2) {
-				Thread.sleep(2000);
-				System.out.println("llili");
-				for(int i = 0;i<10;i++) {
-					if(i == 0) {
-						
+			
+			/* ======== Power Handling ========= */
+			if(apiExp > 10) {
+				lvlapi += 1;
+				apiExp -= 10;
+			}
+			else if(apiExp > 20) {
+				lvlapi += 2;
+				apiExp -= 20;
+			}
+			
+			
+			if(airExp > 10) {
+				lvlair += 1;
+				airExp -= 10;
+			}
+			else if(airExp > 20) {
+				lvlair += 2;
+				airExp -= 20;
+			}
+			
+			
+			if(anginExp > 10) {
+				lvlangin += 1;
+				anginExp -= 10;
+			}
+			else if(anginExp > 20) {
+				lvlangin += 2;
+				anginExp -= 20;
+			}
+			
+			if(lvlapi == 1) {
+				powerApi += lvlapi * 100000;
+			}
+			/* =========   GAME   ========= */
+			if(air||api||angin == true) {
+				if(magic1 = false) {
+					pow += 100000;
+				}
+				else if(magic1 = true) {
+				}
+			}
+			if(Pernah == 0) {
+				Thread.sleep(1000);
+				System.out.println("Command :");
+				System.out.println("-Magic Area\n-Training\n-TebakanGame\n-Area 1");
+				Pernah = 1;
+			}
+			else if(Pernah == 1) {
+				System.out.print("Command = ");
+			}
+			String data = scan.nextLine();
+			if(data.equalsIgnoreCase("Area 1")) {
+				System.out.println("Memasuki area 1");
+				Area1();
+			}
+			else if(data.equalsIgnoreCase("help")) {
+				System.out.println("Command :");
+				System.out.println("-Magic Area\n-Training\n-TebakanGame\n-Area 1");
+			}
+			else if(data.equalsIgnoreCase("check")) {
+				System.out.println("======== Profil =======");
+				System.out.println("Namaewa = "+nama);
+				if(maxlevel == 1) {
+					System.out.println("|::|LEVEL SUDAH MAX|::|");
+				}
+				else if(maxlevel == 0){
+					System.out.println("lvl = "+lvl);
+					System.out.println("Level = "+level);
+				}
+				System.out.println("power kamu = "+pow+"\nkesenangan kamu = "+senang);
+				System.out.println("Duit kamu "+"Rp."+duit);
+				System.out.println("Darah kamu = "+health);
+				System.out.println("\n======  Power  ======");
+				System.out.println("Magic power = "+magicbool);
+				System.out.println("                _________");
+				System.out.println("            Api   = "+api);
+				System.out.println("            Air   = "+air);
+				System.out.println("            Angin = "+angin);
+				System.out.println("Power happy = "+powhap);
+				System.out.println("\n======  Loop   ======");
+				System.out.println("Loop uang   = "+loopuang);
+				System.out.println("Loop power  = "+looppow);
+				System.out.println("\n======Keperluan======");
+				System.out.println("   Cart     = "+cartbool);
+				System.out.println("   Pet      = "+kucing);
+			}
+			else if(data.equalsIgnoreCase("Training")) {
+				tr = 1 + ran.nextInt(5);
+				if(tr == 1) {
+					Thread.sleep(2000);
+					System.out.println("(*) Ini Namanya Apa?");
+					command = scan.nextLine();
+					if(command.equalsIgnoreCase("Bintang")) {
+						System.out.println("Kamu Benar");
+						System.out.println("Duit +50000");
+						duit += duittr;
+					}
+					else if(command.equalsIgnoreCase("Perkalian")) {
+						System.out.println("Sangat Tepat Sekali");
+						System.out.println("Magic Star +1!");
+						magicStar += 1;
+					}
+					else {
+						System.out.println("Salah!");
+					}
+				}
+				else if(tr == 2) {
+					Thread.sleep(2000);
+					System.out.println("llili");
+					for(int i = 0;i<10;i++) {
+						if(i == 0) {
+							
+						}
 					}
 				}
 			}
-		}
-		else if(data.equalsIgnoreCase("Magic Area") || data.equalsIgnoreCase("MagicArea")){
-			System.out.println("Magic Area..");
-			Thread.sleep(2000);
-			System.out.println("Mau Melatih Kekuatan Apa?");
-			Thread.sleep(1000);
-			System.out.println("1.Api");
-			System.out.println("2.Air");
-			System.out.println("3.Angin");
-			data = scan.nextLine();
-			if(data.equalsIgnoreCase("Api")) {
-				System.out.println("Api");
+			else if(data.equalsIgnoreCase("Magic Area") || data.equalsIgnoreCase("MagicArea")){
+				System.out.println("Magic Area..");
+				Thread.sleep(2000);
+				System.out.println("1.Api");
+				System.out.println("2.Air");
+				System.out.println("3.Angin");
+				data = scan.nextLine();
+				if(data.equalsIgnoreCase("Api")) {
+					if(api = true) {
+						System.out.println("-Advance\n-Expert\n-Upgrade");
+						data = scan.nextLine();
+						if(data.equalsIgnoreCase("Advance") || data.equalsIgnoreCase("Adv")) {
+							System.out.println("Training 2 Xp / Hunt 8 Xp");
+						}
+					}
+					else if(api = false) {
+						System.out.println("Kamu Tidak Memiliki Kekuatan Api");
+					}
+				}
+				else if(data.equalsIgnoreCase("Air")) {
+					if(air = true) {
+						System.out.println("-Advance\n-Expert\n-Upgrade");
+					}
+					else if(air = false) {
+						System.out.println("Kamu Tidak Memiliki Kekuatan Air");
+					}
+				}
+				else if(data.equalsIgnoreCase("Angin")) {
+					if(angin = true) {
+						System.out.println("-Advance\n-Expert\n-Upgrade");
+					}
+					else if(angin = false) {
+						System.out.println("Kamu Tidak Memiliki Kekuatan Angin");
+					}
+				}
 			}
-			else if(data.equalsIgnoreCase("Air")) {
-				System.out.println("Air");
+			else {
+				System.out.println("Command Tidak Ditemukan Ketik Help Untuk Mengetahui Command");
 			}
-			else if(data.equalsIgnoreCase("Angin")) {
-				System.out.println("Angin");
-			}
-		}
+		}while(true);
 			
 	}
 
