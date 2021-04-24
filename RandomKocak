@@ -1,0 +1,30 @@
+public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		Random ran = new Random();
+		
+		do {
+			int random = 1 + ran.nextInt(2);
+			
+			
+			String data2 = "";
+			String data = scan.nextLine();
+			System.out.println("Jumlah index = "+(data.length()-1));
+			int Sub = 1 + ran.nextInt(4);
+			int str = 5 + ran.nextInt(data.length() - 5);
+			int sub = 1 + ran.nextInt(4);
+			int Str = 5 + ran.nextInt(data.length() - 5);
+			if(random == 1) {
+				data2 = data.substring(sub,Str);
+			}
+			data = data.substring(Sub, str);
+			System.out.println("Hasil Yang Keluar = "+data+data2);
+			System.out.println("Index ke-"+Sub);
+			System.out.println("Sampai ke-"+(str - 1));
+			if(random == 1) {
+				System.out.println("Di tambah");
+				System.out.println("Index ke-"+sub);
+				System.out.println("Sampai ke-"+(Str - 1));
+			}
+		}while(true);
+		
+	}
