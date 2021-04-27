@@ -1,0 +1,597 @@
+package RaftGame;
+
+import java.util.*;
+import java.time.format.DateTimeFormatter;
+import java.time.LocalDateTime;
+
+public class Raft {
+	// == Costructor == //
+	static LocalDateTime now = LocalDateTime.now();
+	static DateTimeFormatter f = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+	
+	static Scanner scan = new Scanner(System.in);
+	static Random ran = new Random();
+	
+	// == Variable == //
+	static String date = now.format(f);
+	static String haridibuat = "26/04/2021";
+	static String nama;
+	static String command;
+	static int input;
+	
+	static int exp = 0;
+	static int level = 1;
+	static int kenyang = 100;
+	static int kesegaran = 100;
+	
+	static int plastik = 0;
+	static int plastikUbah;
+	static int besi = 0;
+	static int besiUbah;
+	static int daun = 0;
+	static int daunUbah;
+	static int kaca = 0;
+	static int kacaUbah;
+	static int kayu = 0;
+	static int kayuUbah;
+	static int fish = 0;
+	static int fishUbah;
+	static int batu = 0;
+	static int batuUbah;
+	static int lootbox = 0;
+	static int lootboxRan;
+	static int tali = 0;
+	static int oli = 0;
+	static int kabel = 0;
+	public static int kapak = 0;
+	
+	static int ikan = 0;
+	static int minuman = 0;
+	static int ayam = 0;
+	static int kelapa = 0;
+	static int bluebery = 0;
+	
+	public static boolean pernah = false;
+	public static boolean gelas = false;
+	public static boolean tungku = false;
+	public static boolean pemasakAir = false;
+	public static boolean pemasakAirModern = false;
+	
+	
+	//  Pelayaran  //
+	public static boolean kapalLayar = false;
+	public static boolean mesin = false;
+	public static boolean layar = false;
+	public static boolean pembelok = false;
+	public static boolean setir = false;
+	static int defenserubah = 0;
+	static int defense = 0;
+	static int kecepatan = 0;
+	static int kapalHandling = 0;
+	static int perjalanan = 0;
+	
+	//   Random   //
+	static int RandomSleep;
+	static int RandomChat;
+	static int RandomBarang;
+	static int RandomExp;
+	static int Random;
+	
+	//  Hunting  //
+	static int health = 100;
+	static int attack = 0;
+	
+	static int enemyAttack = 10;
+	static int enemyHealth = 100;
+	
+	
+	public static void main(String[] args) throws Exception{
+		
+		
+		System.out.println("Hai Selamat Datang Di Game Raft Command Line Interface");
+		System.out.print("Silahkan Masukan Nama = ");
+		nama = scan.nextLine();
+		command = scan.nextLine();
+		if(command.equalsIgnoreCase("s")) {
+			
+		}
+		else {
+			for(int i = 0;i < 4;i++) {
+				System.out.println("         . . . . ");
+				Thread.sleep(200);
+				System.out.println("          . . .  ");
+				Thread.sleep(200);
+				System.out.println("         . . . . ");
+				Thread.sleep(200);
+				System.out.println("          . . .  ");
+				Thread.sleep(200);
+			}
+			for(int i = 0;i < 5;i++) {
+				System.out.println("         . . . . ");
+				Thread.sleep(100);
+				System.out.println("          . . .  ");
+				Thread.sleep(100);
+				System.out.println("         . . . . ");
+				Thread.sleep(100);
+				System.out.println("          . . .  ");
+				Thread.sleep(100);
+			}
+			System.out.println("           . .  ");
+		}
+		Thread.sleep(2000);
+		System.out.println("Startup Items Kamu = ");
+		RandomSleep = 1 + ran.nextInt(3) * 1000;
+		Thread.sleep(RandomSleep);
+		RandomBarang = 1 + ran.nextInt(3);
+		if(RandomBarang == 1) {
+			System.out.println("-Kaca +2\n-Kayu +4\n-Daun +5\n-Batu +6");
+			kaca += 2;
+			kayu += 4;
+			daun += 5;
+			batu += 6;
+		}else if(RandomBarang == 2) {
+			System.out.println("-Kaca +5\n-Kayu +3\n-Daun +2\n-Batu +5");
+			kaca += 5;
+			kayu += 3;
+			daun += 2;
+			batu += 5;
+		}else if(RandomBarang == 3) {
+			System.out.println("-Kaca +2\n-Kayu +1\n-Daun +2\n-Besi +4\n-Batu +2");
+			kaca += 2;
+			kayu += 1;
+			daun += 2;
+			besi += 4;
+			batu += 2;
+		}
+		System.out.println("Game Dimulai");
+		
+		do {
+			if(kenyang == 0) {
+				health -= 1;
+				kenyang = 0;
+				System.out.println("Kamu Lapar . . .");
+			}
+			if(kesegaran == 0) {
+				health -= 1;
+				kesegaran = 0;
+				System.out.println("Kamu Haus . . .");
+			}
+			if(exp == 20) {
+				level += 1;
+				exp = 0;
+			}
+			
+			plastik += plastikUbah;
+			besi += besiUbah;
+			daun += daunUbah;
+			kayu += kayuUbah;
+			kaca += kacaUbah;
+			batu += batuUbah;
+			
+			plastikUbah = 0;
+			besiUbah = 0;
+			daunUbah = 0;
+			kayuUbah = 0;
+			kacaUbah = 0;
+			batuUbah = 0;
+			
+			if(pernah == false) {
+				System.out.println("Farm,Sail,Fish,Inv(Inventory),Profil");
+				pernah = true;
+			}
+			command = scan.nextLine();
+			if(command.equalsIgnoreCase("Farm")) {
+				RandomSleep = 2 + ran.nextInt(3) * 1000;
+				Thread.sleep(RandomSleep);
+				plastikUbah = 0 + ran.nextInt(5);
+				besiUbah = 0 + ran.nextInt(3);
+				daunUbah = 1 + ran.nextInt(10);
+				kacaUbah = 0 + ran.nextInt(1);
+				kayuUbah = 0 + ran.nextInt(5);
+				batuUbah = 0 + ran.nextInt(10);
+				lootboxRan = 1 + ran.nextInt(5);
+				RandomExp = 1 + ran.nextInt(3);
+				exp += RandomExp;
+				if(lootboxRan >= 1 && lootboxRan < 3) {
+					System.out.println("LootBox +1");
+					lootbox++;
+				}
+				else {
+					
+				}
+				System.out.println("Plastik +"+plastikUbah);
+				System.out.println("Daun +"+daunUbah);
+				System.out.println("Besi +"+besiUbah);
+				System.out.println("Kayu +"+kayuUbah);
+				System.out.println("kaca +"+kacaUbah);
+				System.out.println("Exp  +"+RandomExp);
+			}
+			else if(command.equalsIgnoreCase("Profil") || command.equalsIgnoreCase("P")) {
+				System.out.println("== Nama ==  \""+nama+"\"\n");
+				System.out.println("-Darah       = "+health);
+				System.out.println("-Kesegaran   = "+kesegaran);
+				System.out.println("-Kekenyangan = "+kenyang);
+				System.out.println("= Kecepatan  = "+kecepatan+"\n");
+				System.out.println("= Handling   = "+kapalHandling);
+				System.out.println("= defense    = "+defense);
+				System.out.println("---- Perjalanan ---- "+perjalanan+" km");
+			}
+			else if(command.equalsIgnoreCase("Inventory") || command.equalsIgnoreCase("Inv")) {
+				System.out.println("Plastik  = "+plastik);
+				System.out.println("Daun     = "+daun);
+				System.out.println("kayu     = "+kayu);
+				System.out.println("Kaca     = "+kaca);
+				System.out.println("Besi     = "+besi);
+				System.out.println("Batu     = "+batu);
+				System.out.println("Tali     = "+tali);
+				if(kapak >= 1) {
+					System.out.println("kapak     = 1 \n");
+				}
+				System.out.println("Mesin    ="+mesin);
+				System.out.println("Layar    ="+layar);
+				System.out.println("Pembelok ="+pembelok);
+				System.out.println("Setir    ="+setir);
+			}
+			else if(command.equalsIgnoreCase("Craft") || command.equalsIgnoreCase("C")) {
+				System.out.println("=== Kebutuhan ===\n-");
+				System.out.println("== Gelas ==\nPlastik 6x");
+				System.out.println("== Tungku ==\nBesi x4\nBatu x4\nTali x6");
+				System.out.println("== Pemasak Air ==\nBesi x2\nTali x6\nBatu x6");
+				System.out.println("== Pemasak Air Modern ==\nBesi x5\nTali x10\nKaca x6");
+				
+				System.out.println("\n====== Alat ======");
+				System.out.println("== Kapak ==\nKayu x3\nBatu x3\nTali x3");
+				
+				System.out.println("\n=== Bahan Belum Jadi ===");
+				System.out.println("== Tali ==\nPlastik x2\ndaun x2");
+				System.out.println("== Kabel ==\nTali x5\nBesi x5\nPlastik x5");
+				
+				System.out.println("\n=== Perlengkapan Layar ===");
+				System.out.println("== Mesin ==\nKabel x4\nBesi x20\nOli x4");
+				System.out.println("== Pembelok ==\nKabel x2\nBesi x15");
+				System.out.println("== Setir ==\nTali x6\nKabel x2\nBesi x8");
+				System.out.println("== Layar Kayu ==\nDaun x10\nKayu x6\nTali x15");
+				System.out.println("== Layar Besi ==\nDaun x10\nBesi x6\nTali x20");
+				System.out.println("");
+				
+				command = scan.nextLine();
+				if(command.equalsIgnoreCase("Gelas")) {
+					if(plastik < 6) {
+						System.out.println("Kurang Bahan");
+					}
+					else if(plastik >= 6) {
+						gelas = true;
+						System.out.println("Crafting selesai");
+					}
+				}
+				else if(command.equalsIgnoreCase("Tungku")) {
+					if(besi >= 4 && batu >= 4 && tali >= 6) {
+						besi -= 4;
+						batu -= 4;
+						tali -= 6;
+						System.out.println("Dalam Pengerjaan . . .");
+						for(int i = 5;i > 0;i--) {
+							System.out.println("Sisa "+i+" Detik Lagi");
+							Thread.sleep(1000);
+						}
+						tungku = true;
+						System.out.println("Pengerjaan Selesai!");
+					}
+					else {
+						System.out.println("Kurang Bahan!");
+					}
+				}
+				else if(command.equalsIgnoreCase("kapak")) {
+					if(kayu >= 3 && batu >= 3 && tali >= 3) {
+						kayu -= 3;
+						batu -= 3;
+						tali -= 3;
+						kapak += 10;
+						System.out.println("Kapak Telah Di Buat");
+					}
+				}
+				else if(command.equalsIgnoreCase("Pemasak Air")) {
+					if(besi >= 6 && tali >= 6 && batu >= 5) {
+						besi -= 6;
+						tali -= 6;
+						batu -= 5;
+						System.out.println("Dalam Pengerjaan . . .");
+						for(int i = 5;i > 0;i--) {
+							System.out.println("Sisa "+i+" Detik Lagi");
+							Thread.sleep(1000);
+						}
+						pemasakAir = true;
+						System.out.println("Pengerjaan Selesai!");
+					}
+					else {
+						System.out.println("Kurang Bahan!");
+					}
+				}
+				else if(command.equalsIgnoreCase("Pemasak Air Modern")) {
+					if(besi >= 5 && tali >= 10 && kaca >= 6) {
+						besi -= 5;
+						tali -= 10;
+						kaca -= 6;
+						System.out.println("Dalam Pengerjaan . . .");
+						for(int i = 7;i > 0;i--) {
+							System.out.println("Sisa "+i+" Detik Lagi");
+							Thread.sleep(1000);
+						}
+						pemasakAirModern = true;
+						System.out.println("Pengerjaan Selesai!");
+					}
+					else {
+						System.out.println("Kurang Bahan!");
+					}
+						
+				}
+				else if(command.equalsIgnoreCase("Tali")) {
+					System.out.println("Mau Berapa?");
+					input = scan.nextInt();
+					if(input <= 0) {
+						System.out.println("Gak Boleh Kurang Dari Sam Dengan Nol");
+					}
+					if(plastik >= 2 * input && daun >= 2 * input) {
+						tali += input;
+						plastik -= 2 * input;
+						daun -= 2 * input;
+						System.out.println("Selesai Di Buat");
+					}
+					else {
+						System.out.println("Kurang Bahan!");
+					}
+				}
+				else if(command.equalsIgnoreCase("Kabel")) {
+					System.out.println("Mau Berapa?");
+					input = scan.nextInt();
+					if(input <= 0) {
+						System.out.println("Gak Boleh Kurang Dari Sam Dengan Nol");
+					}
+					if(tali >= 5 * input && besi >= 5 * input && plastik >= 5 * input) {
+						kabel += input;
+						tali -= 5 * input;
+						besi -= 5 * input;
+						plastik -= 5 * input;
+						System.out.println("Selesai Di Buat");
+					}
+					else {
+						System.out.println("Kurang Bahan!");
+					}
+				}
+				else if(command.equalsIgnoreCase("Mesin")) {
+					if(kabel >= 4 && besi >= 20 && oli >= 4) {
+						kabel -= 4;
+						besi -= 20;
+						oli -= 4;
+						mesin = true;
+						kecepatan = 10;
+						System.out.println("Mesin Telah Di Buat!");
+					}
+					else {
+						System.out.println("Kurang Bahan");
+					}
+				}
+				else if(command.equalsIgnoreCase("Pembelok")) {
+					if(kabel >= 2 && besi >= 15) {
+						pembelok = true;
+						kapalHandling += 10;
+						kabel -= 2;
+						besi -= 15;
+						System.out.println("pembelok Selesai Di Buat!");
+					}
+					else {
+						System.out.println("Kurang Bahan Bro");
+					}
+				}
+				else if(command.equalsIgnoreCase("Setir")) {
+					if(tali >= 6 && kabel >= 2 && besi >= 8) {
+						setir = true;
+						kapalHandling += 5;
+						tali -= 6;
+						kabel -= 2;
+						besi -= 8;
+						System.out.println("Setir Telah Di Buat!");
+					}
+					else {
+						System.out.println("Kekurangan Bahan");
+					}
+				}
+				else if(command.equalsIgnoreCase("layar kayu")) {
+					if(daun >= 10 && kayu >= 6 && tali >= 15 ) {
+						layar = true;
+						kecepatan += 10;
+						defense += 5;
+						daun -= 10;
+						kayu -= 6;
+						tali -= 15;
+						System.out.println("Layar Selesai Di Buat");
+					}
+					else {
+						System.out.println("Kurang Bahan");
+					}
+				}
+				else if(command.equalsIgnoreCase("layar besi")) {
+					if(daun >= 10 && besi >= 6 && tali >= 15 ) {
+						layar = true;
+						kecepatan += 15;
+						defense += 10;
+						daun -= 10;
+						besi -= 6;
+						tali -= 15;
+						System.out.println("Layar Selesai Di Buat");
+					}
+					else {
+						System.out.println("Kurang Bahan-Bahan");
+					}
+				}
+				
+			}
+			else if(command.equalsIgnoreCase("Fish")) {
+				
+				RandomSleep = 1 + ran.nextInt(3) * 1000;
+				for(int i = -1;i < (RandomSleep / 1000);i++) {
+					System.out.println("Fishy . . .");
+					Thread.sleep(RandomSleep);
+				}
+				fishUbah = 1 + ran.nextInt(5);
+				System.out.println("Kamu Mendapatkan "+fishUbah+" Ikan!");
+			}
+			
+			else if(command.equalsIgnoreCase("Sail") || command.equalsIgnoreCase("Go")) {
+				if(kapalLayar == false) {
+					System.out.println("Tidak Bisa Berlayar Membutuhkan requirements =  ");
+					if(mesin == false) {
+						System.out.println("!- Mesin");
+					}
+					else {
+						System.out.println("v- Mesin");
+					}
+					
+					if(layar == false) {
+						System.out.println("!- Layar");
+					}
+					else {
+						System.out.println("v- Layar");
+					}
+					
+					if(pembelok == false) {
+						System.out.println("!- Pembelok Kapal");
+					}
+					else {
+						System.out.println("v- Pembelok Kapal");
+					}
+					
+					if(setir == false) {
+						System.out.println("!- Setir Kapal");
+					}
+					else {
+						System.out.println("v- Setir Kapal");
+					}
+					
+				}
+				else if(kapalLayar == true) {
+					if(level < 3) {
+						System.out.println("Level Tidak Mencukupi");
+					}
+					else if(level >= 3) {
+						System.out.println("Berlayar . . . .");
+						System.out.println("Ke Map 2!");
+						perjalanan += 1 + ran.nextInt(3);
+						for(int i = 0;i < perjalanan;i++) {
+							System.out.println("Berlayar ~ ~");
+						}
+						Random = 1 + ran.nextInt(3);
+						if(Random == 1) {
+							RandomChat = 1 + ran.nextInt(2);
+							if(RandomChat == 1) {
+								System.out.println("Huuh Untung Gak Ada Pembajak Laut");
+							}
+							else {
+								System.out.println("Fiuuh Tidak ada perompak Kamu Selamat");
+							}
+						}
+						else {
+							RandomChat = 1 + ran.nextInt(2);
+							if(RandomChat == 1) {
+								System.out.println("Oh Tidak Perompak datang!");
+								System.out.println("Duar!");
+							}
+							else {
+								System.out.println("Nooo Perompak Datang");
+								System.out.println("Bum!");
+							}
+							defense -= enemyAttack;
+							if(defense <= 0) {
+								System.out.println("Tidak Kapalmu Hancur!");
+								return;
+							}
+							else {
+								RandomChat = 1 + ran.nextInt(2);
+								if(RandomChat == 1) {
+									System.out.println("Fiuuh Selamat~");
+								}
+								else {
+									System.out.println("Alhamdulillah Selamat");
+								}
+							}
+						}
+					}
+					if(perjalanan >= 10) {
+						System.out.println("Kamu Tiba Di Sebuah Pulau . . .");
+						Random = 1 + ran.nextInt(2);
+						if(Random == 1) {
+							Pulau1();
+						}
+						else {
+							Pulau2();
+						}
+					}
+				}
+			}
+			
+			//  Handle  //
+			exp++;
+			kenyang--;
+			kesegaran--;
+			
+		}while(true);
+	}
+	
+	public static void Pulau1() throws Exception{
+		System.out.println("Mau Berjelajah?");
+		command = scan.nextLine();
+		if(command.equalsIgnoreCase("y") || command.isEmpty()) {
+			Random = 1 + ran.nextInt(2);
+			int pernahblue = 0;
+			int pernahchop = 0;
+			if(Random == 1) {
+				do {
+					System.out.println("Kamu Menemukan Kelapa . . .");
+					Thread.sleep(2000);
+					System.out.println("Kamu Menemukan Blueberry");
+					Thread.sleep(2000);
+					command = scan.nextLine();
+					if(command.equalsIgnoreCase("kelapa") || command.equalsIgnoreCase("1")) {
+						if(pernahchop == 0) {
+							if(kapak >= 5) {
+								kapak -= 5;
+								RandomBarang = 2 + ran.nextInt(6);
+								kelapa += RandomBarang;
+								System.out.println("Kamu Mendapatkan "+RandomBarang+" Kelapa");
+								RandomBarang = 2 + ran.nextInt(10);
+								kayu += RandomBarang;
+								System.out.println("Dan Dapat "+RandomBarang+" Kayu");
+							}
+							else {
+								System.out.println("Ketahanan Kapak kurang");
+							}
+						}
+						else{
+							System.out.println("Kelapa Sudah DI Tebang");
+						}
+					}
+					else if(command.equalsIgnoreCase("blueberry") || command.equalsIgnoreCase("b")) {
+						if(pernahblue == 0) {
+							RandomBarang = 2 + ran.nextInt(10);
+							bluebery += RandomBarang;
+							System.out.println("BlueBerry +"+RandomBarang+"!");
+							pernahblue = 1;
+						}
+						else {
+							System.out.println("BlueBerry Sudah Diambil");
+						}
+					}
+				}while(true);
+			}
+		}
+		else {
+			
+		}
+	}
+	
+	
+	public static void Pulau2() {
+			
+	}
+
+}
